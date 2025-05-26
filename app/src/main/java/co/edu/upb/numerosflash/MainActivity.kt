@@ -12,7 +12,15 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import co.edu.upb.numerosflash.ui.theme.NumerosFlashTheme
+import co.edu.upb.numerosflash.views.Credits
+import co.edu.upb.numerosflash.views.Game
+import co.edu.upb.numerosflash.views.Home
 import co.edu.upb.numerosflash.views.Login
+import co.edu.upb.numerosflash.views.Register
+import co.edu.upb.numerosflash.views.Instructions
+import co.edu.upb.numerosflash.views.Levels
+import co.edu.upb.numerosflash.views.Multiplayer
+import co.edu.upb.numerosflash.views.Profile
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,14 +28,14 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             NumerosFlashTheme {
-                Navegacion()
+                Navigation()
             }
         }
     }
 }
 
 @Composable
-fun Navegacion() {
+fun Navigation() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
@@ -38,13 +46,37 @@ fun Navegacion() {
         composable("login") {
             Login(navController)
         }
+        composable("register") {
+            Register(navController)
+        }
+        composable("home") {
+            Home(navController)
+        }
+        composable("credits") {
+            Credits(navController)
+        }
+        composable("instructions") {
+            Instructions(navController)
+        }
+        composable("profile") {
+            Profile(navController)
+        }
+        composable("levels") {
+            Levels(navController)
+        }
+        composable("game") {
+            Game(navController)
+        }
+        composable("multiplayer") {
+            Multiplayer(navController)
+        }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun NavigationPreview() {
     NumerosFlashTheme {
-        Navegacion()
+        Navigation()
     }
 }

@@ -5,6 +5,6 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 
 @Composable
-fun Niveles(navController: NavController){
+fun Levels(navController: NavController){
     Text("Selecciona la dificultad")
 }
