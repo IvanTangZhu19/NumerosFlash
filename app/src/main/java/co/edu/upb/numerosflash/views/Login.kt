@@ -12,8 +12,11 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -25,6 +28,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 
@@ -32,6 +37,7 @@ import androidx.navigation.NavController
 fun Login(navController: NavController){
     var email by remember{ mutableStateOf("") }
     var contraseña by remember{ mutableStateOf("") }
+    var contraseñaVisible by remember { mutableStateOf(false) }
     Column (
         modifier = Modifier.fillMaxWidth().padding(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -44,7 +50,7 @@ fun Login(navController: NavController){
         Spacer(modifier = Modifier.height(15.dp))
         Text(
             "NumerosFlash",
-            style = MaterialTheme.typography.headlineMedium
+            style = MaterialTheme.typography.headlineLarge
         )
         Spacer(modifier = Modifier.height(15.dp))
         Text(
@@ -68,7 +74,18 @@ fun Login(navController: NavController){
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
             leadingIcon = {Icon(Icons.Default.Lock, contentDescription = "contraseña")},
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+            visualTransformation = if (contraseñaVisible) VisualTransformation.None else PasswordVisualTransformation(),
+            trailingIcon = {
+                val image = if(contraseñaVisible) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
+                IconButton(
+                    onClick = {
+                        contraseñaVisible = !contraseñaVisible
+                    }
+                ) {
+                    Icon(imageVector = image, contentDescription = "ver contraseña")
+                }
+            }
         )
         Spacer(modifier = Modifier.height(15.dp))
         Button(
