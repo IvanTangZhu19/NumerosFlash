@@ -17,7 +17,7 @@ import androidx.navigation.NavController
 @Composable
 fun sideMenu(navController: NavController){
     ModalDrawerSheet(
-        modifier = Modifier.width(200.dp).background(MaterialTheme.colorScheme.error)
+        modifier = Modifier.width(200.dp)
     ) {
         Text("Menu", modifier = Modifier.padding(16.dp))
         NavigationDrawerItem(

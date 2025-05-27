@@ -1,6 +1,7 @@
 package co.edu.upb.numerosflash.views
 
 import android.R.attr.navigationIcon
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -21,10 +22,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import co.edu.upb.numerosflash.layouts.Header
 import co.edu.upb.numerosflash.layouts.sideMenu
+import co.edu.upb.numerosflash.ui.theme.NumerosFlashTheme
 
 @Composable
 fun Credits(navController: NavController){
@@ -43,24 +47,26 @@ fun Credits(navController: NavController){
         ) {
             Header(navController, scope, drawerState)
             Spacer(modifier = Modifier.height(20.dp))
-            IconButton(
-                onClick = { navController.popBackStack() },
-                modifier = Modifier
-                    .padding(16.dp)
-                    .size(36.dp)
-                    //.align(Alignment.TopStart)
-            ) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = "Volver",
-                )
-            }
+            Box(Modifier.fillMaxWidth()){
+                IconButton(
+                    onClick = { navController.popBackStack() },
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .size(36.dp)
+                        .align(Alignment.TopStart)
+                ) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = "Volver",
+                    )
+                }
                 Text(
                     "Créditos",
-                    style = MaterialTheme.typography.headlineMedium
+                    style = MaterialTheme.typography.headlineMedium,
+                    modifier = Modifier.align(Alignment.Center)
                 )
-
-            Text("Desarrollado por Iván Tang Zhu")
+            }
+            Text("Desarrollado por Iván Tang Zhu", style = MaterialTheme.typography.bodyLarge)
         }
     }
 }

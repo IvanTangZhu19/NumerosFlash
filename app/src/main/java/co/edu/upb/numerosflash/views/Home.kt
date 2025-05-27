@@ -24,7 +24,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import co.edu.upb.numerosflash.layouts.Header
 import co.edu.upb.numerosflash.layouts.sideMenu
-import java.nio.file.WatchEvent
 
 @Composable
 fun Home(navController: NavController){
@@ -36,55 +35,56 @@ fun Home(navController: NavController){
         drawerContent = {
             sideMenu(navController)
         }
-    ) { }
-    Column(
-        modifier = Modifier.fillMaxWidth().padding(15.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ){
-        Header(navController, scope, drawerState)
-        Spacer(modifier = Modifier.height(20.dp))
-        Text(
-            "Inicio",
-            style = MaterialTheme.typography.headlineMedium
-        )
-        Spacer(Modifier.height(30.dp))
-        Column (
-            verticalArrangement = Arrangement.spacedBy(15.dp)
+    ) {
+        Column(
+            modifier = Modifier.fillMaxWidth().padding(15.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ){
-            Button(
-                modifier = Modifier.width(200.dp),
-                onClick = {navController.navigate("Levels")},
-                shape = RoundedCornerShape(20.dp)
-            ) {
-                Text("Jugar", style = MaterialTheme.typography.bodyLarge)
-            }
-            Button(
-                modifier = Modifier.width(200.dp),
-                onClick = {navController.navigate("multiplayer")},
-                shape = RoundedCornerShape(20.dp)
-            ) {
-                Text("Multijugador", style = MaterialTheme.typography.bodyLarge)
-            }
-            Button(
-                modifier = Modifier.width(200.dp),
-                onClick = {navController.navigate("instructions")},
-                shape = RoundedCornerShape(20.dp)
-            ) {
-                Text("Instrucciones", style = MaterialTheme.typography.bodyLarge)
-            }
-            Button(
-                modifier = Modifier.width(200.dp),
-                onClick = {navController.navigate("tricks")},
-                shape = RoundedCornerShape(20.dp)
-            ) {
-                Text("Trucos", style = MaterialTheme.typography.bodyLarge)
-            }
-            Button(
-                modifier = Modifier.width(200.dp),
-                onClick = {navController.navigate("profile")},
-                shape = RoundedCornerShape(20.dp)
-            ) {
-                Text("Perfil", style = MaterialTheme.typography.bodyLarge)
+            Header(navController, scope, drawerState)
+            Spacer(modifier = Modifier.height(20.dp))
+            Text(
+                "Inicio",
+                style = MaterialTheme.typography.headlineMedium
+            )
+            Spacer(Modifier.height(30.dp))
+            Column (
+                verticalArrangement = Arrangement.spacedBy(15.dp)
+            ){
+                Button(
+                    modifier = Modifier.width(200.dp),
+                    onClick = {navController.navigate("Levels")},
+                    shape = RoundedCornerShape(20.dp)
+                ) {
+                    Text("Jugar", style = MaterialTheme.typography.bodyLarge)
+                }
+                Button(
+                    modifier = Modifier.width(200.dp),
+                    onClick = {navController.navigate("multiplayer")},
+                    shape = RoundedCornerShape(20.dp)
+                ) {
+                    Text("Multijugador", style = MaterialTheme.typography.bodyLarge)
+                }
+                Button(
+                    modifier = Modifier.width(200.dp),
+                    onClick = {navController.navigate("instructions")},
+                    shape = RoundedCornerShape(20.dp)
+                ) {
+                    Text("Instrucciones", style = MaterialTheme.typography.bodyLarge)
+                }
+                Button(
+                    modifier = Modifier.width(200.dp),
+                    onClick = {navController.navigate("tricks")},
+                    shape = RoundedCornerShape(20.dp)
+                ) {
+                    Text("Trucos", style = MaterialTheme.typography.bodyLarge)
+                }
+                Button(
+                    modifier = Modifier.width(200.dp),
+                    onClick = {navController.navigate("profile")},
+                    shape = RoundedCornerShape(20.dp)
+                ) {
+                    Text("Perfil", style = MaterialTheme.typography.bodyLarge)
+                }
             }
         }
     }
