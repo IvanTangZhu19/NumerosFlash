@@ -90,14 +90,14 @@ fun Login(navController: NavController){
         Spacer(modifier = Modifier.height(15.dp))
         Button(
             onClick = {navController.navigate("home")},
-            modifier = Modifier.width(200.dp),
+            modifier = Modifier.width(170.dp),
             shape = RoundedCornerShape(20.dp)
         ) {
             Text("Inicar Sesión", style = MaterialTheme.typography.bodyLarge)
         }
         Button(
             onClick = { navController.navigate("register") },
-            modifier = Modifier.width(200.dp),
+            modifier = Modifier.width(170.dp),
             shape = RoundedCornerShape(20.dp)
         ) {
             Text("Registro", style = MaterialTheme.typography.bodyLarge)
