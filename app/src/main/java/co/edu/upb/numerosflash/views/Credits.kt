@@ -22,13 +22,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import co.edu.upb.numerosflash.layouts.Header
 import co.edu.upb.numerosflash.layouts.sideMenu
-import co.edu.upb.numerosflash.ui.theme.NumerosFlashTheme
 
 @Composable
 fun Credits(navController: NavController){
