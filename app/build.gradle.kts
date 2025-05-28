@@ -62,4 +62,10 @@ dependencies {
 
     implementation("androidx.compose.material:material-icons-extended:1.6.1")
 
+    //Para el uso de firebase
+    implementation(platform("com.google.firebase:firebase-bom:32.7.4"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-storage")
 }
