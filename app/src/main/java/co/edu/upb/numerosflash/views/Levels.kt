@@ -56,11 +56,8 @@ fun Levels(navController: NavController, gameViewModel: Game){
                 modifier = Modifier
                     .padding(25.dp)
                     .fillMaxHeight(),
-                verticalArrangement = Arrangement.spacedBy(15.dp)
             ){
-                LazyColumn(
-                    verticalArrangement = Arrangement.spacedBy(18.dp)
-                ) {
+                LazyColumn {
                     items(dificultades) { index ->
                         LevelItem(
                             index.titulo,

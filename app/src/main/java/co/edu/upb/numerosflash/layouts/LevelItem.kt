@@ -2,7 +2,9 @@ package co.edu.upb.numerosflash.layouts
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
@@ -52,6 +54,7 @@ fun LevelItem(
             )
         }
     }
+    Spacer(modifier = Modifier.height(12.dp))
     Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
@@ -68,6 +71,7 @@ fun LevelItem(
             }
         }
     }
+    Spacer(modifier = Modifier.height(18.dp))
     if (showDialog) {
         AlertDialog(
             onDismissRequest = { showDialog = false },
