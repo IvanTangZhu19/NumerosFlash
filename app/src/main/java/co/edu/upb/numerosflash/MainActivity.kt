@@ -8,10 +8,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import co.edu.upb.numerosflash.ui.theme.NumerosFlashTheme
+import co.edu.upb.numerosflash.viewmodels.Game
 import co.edu.upb.numerosflash.views.Credits
 import co.edu.upb.numerosflash.views.Game
 import co.edu.upb.numerosflash.views.Home
@@ -38,6 +40,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
+    val gameViewModel: Game = viewModel()
     NavHost(
         navController = navController,
         startDestination = "login",
@@ -66,10 +69,10 @@ fun Navigation() {
             TipsTricks(navController)
         }
         composable("levels") {
-            Levels(navController)
+            Levels(navController, gameViewModel)
         }
         composable("game") {
-            Game(navController)
+            Game(navController, gameViewModel)
         }
         composable("multiplayer") {
             Multiplayer(navController)

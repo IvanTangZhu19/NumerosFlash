@@ -28,9 +28,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import co.edu.upb.numerosflash.layouts.Header
 import co.edu.upb.numerosflash.layouts.sideMenu
+import co.edu.upb.numerosflash.viewmodels.Game
 
 @Composable
-fun Game(navController: NavController){
+fun Game(navController: NavController, gameViewModel: Game){
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     var num by remember{ mutableStateOf(TextFieldValue("")) }

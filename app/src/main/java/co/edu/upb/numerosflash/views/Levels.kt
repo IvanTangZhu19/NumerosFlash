@@ -26,9 +26,10 @@ import co.edu.upb.numerosflash.layouts.sideMenu
 import co.edu.upb.numerosflash.models.Difficulty
 import co.edu.upb.numerosflash.models.Level
 import androidx.compose.foundation.lazy.items
+import co.edu.upb.numerosflash.viewmodels.Game
 
 @Composable
-fun Levels(navController: NavController){
+fun Levels(navController: NavController, gameViewModel: Game){
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
 
@@ -65,18 +66,18 @@ fun Levels(navController: NavController){
                             index.titulo,
                             index.descripcion + "\n" +
                                     "Tiempo: ${index.levels[0].tiempo} segundos}" +
-                                    "Nivel ${index.levels[0].id}" +
-                                    "  - Rango: ${index.levels[0].rangoMin} - ${index.levels[0].rangoMax}" +
-                                    "  - Operaciones: ${index.levels[0].numOperaciones}" +
-                                    "Nivel ${index.levels[1].id}" +
-                                    "  - Rango: ${index.levels[1].rangoMin} - ${index.levels[1].rangoMax}" +
-                                    "  - Operaciones: ${index.levels[1].numOperaciones}" +
-                                    "Nivel ${index.levels[2].id}" +
-                                    "  - Rango: ${index.levels[2].rangoMin} - ${index.levels[2].rangoMax}" +
-                                    "  - Operaciones: ${index.levels[2].numOperaciones}" +
-                                    "Nivel ${index.levels[3].id}" +
-                                    "  - Rango: ${index.levels[3].rangoMin} - ${index.levels[3].rangoMax}" +
-                                    "  - Operaciones: ${index.levels[3].numOperaciones}"
+                                    "\nNivel ${index.levels[0].id}" +
+                                    "\n  - Rango: ${index.levels[0].rangoMin} - ${index.levels[0].rangoMax}" +
+                                    "\n  - Operaciones: ${index.levels[0].numOperaciones}" +
+                                    "\nNivel ${index.levels[1].id}" +
+                                    "\n  - Rango: ${index.levels[1].rangoMin} - ${index.levels[1].rangoMax}" +
+                                    "\n  - Operaciones: ${index.levels[1].numOperaciones}" +
+                                    "\nNivel ${index.levels[2].id}" +
+                                    "\n  - Rango: ${index.levels[2].rangoMin} - ${index.levels[2].rangoMax}" +
+                                    "\n  - Operaciones: ${index.levels[2].numOperaciones}" +
+                                    "\nNivel ${index.levels[3].id}" +
+                                    "\n  - Rango: ${index.levels[3].rangoMin} - ${index.levels[3].rangoMax}" +
+                                    "\n  - Operaciones: ${index.levels[3].numOperaciones}"
                         )
                     }
                 }
