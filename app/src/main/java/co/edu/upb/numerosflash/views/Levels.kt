@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import co.edu.upb.numerosflash.layouts.Header
+import co.edu.upb.numerosflash.layouts.LevelItem
 import co.edu.upb.numerosflash.layouts.sideMenu
 
 @Composable
@@ -56,186 +57,74 @@ fun Levels(navController: NavController){
                 modifier = Modifier.padding(10.dp).fillMaxHeight(),
                 verticalArrangement = Arrangement.spacedBy(15.dp)
             ){
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ){
-                    Text(
-                        "\uD83D\uDC22 Calentamiento ",
-                        style = MaterialTheme.typography.headlineSmall,
-                    )
-                    IconButton(
-                        onClick = {  },
-                    ) {
-                        Icon(
-                            imageVector = Icons.Filled.Info,
-                            contentDescription = "Info",
-                            modifier = Modifier.size(44.dp)
-                        )
-                    }
-                }
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceAround,
-                ){
-                    Button(
-                        onClick = {  },
-                    ){
-                        Text("1", style = MaterialTheme.typography.headlineSmall)
-                    }
-                    Button(
-                        onClick = {  },
-                    ){
-                        Text("2", style = MaterialTheme.typography.headlineSmall)
-                    }
-                    Button(
-                        onClick = {  },
-                    ){
-                        Text("3", style = MaterialTheme.typography.headlineSmall)
-                    }
-                    Button(
-                        onClick = {  },
-                    ){
-                        Text("4", style = MaterialTheme.typography.headlineSmall)
-                    }
-                }
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ){
-                    Text(
-                        "\uD83C\uDFC3\u200D♂\uFE0F Desafío Rápido ",
-                        style = MaterialTheme.typography.headlineSmall,
-                    )
-                    IconButton(
-                        onClick = {  },
-                    ) {
-                        Icon(
-                            imageVector = Icons.Filled.Info,
-                            contentDescription = "Info",
-                            modifier = Modifier.size(44.dp)
-                        )
-                    }
-                }
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceAround,
-                ){
-                    Button(
-                        onClick = {  },
-                    ){
-                        Text("1", style = MaterialTheme.typography.headlineSmall)
-                    }
-                    Button(
-                        onClick = {  },
-                    ){
-                        Text("2", style = MaterialTheme.typography.headlineSmall)
-                    }
-                    Button(
-                        onClick = {  },
-                    ){
-                        Text("3", style = MaterialTheme.typography.headlineSmall)
-                    }
-                    Button(
-                        onClick = {  },
-                    ){
-                        Text("4", style = MaterialTheme.typography.headlineSmall)
-                    }
-                }
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ){
-                    Text(
-                        " \uD83C\uDF29\uFE0F Relámpago",
-                        style = MaterialTheme.typography.headlineSmall,
-                    )
-                    IconButton(
-                        onClick = {  },
-                    ) {
-                        Icon(
-                            imageVector = Icons.Filled.Info,
-                            contentDescription = "Info",
-                            modifier = Modifier.size(44.dp)
-                        )
-                    }
-                }
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceAround,
-                ){
-                    Button(
-                        onClick = {  },
-                    ){
-                        Text("1", style = MaterialTheme.typography.headlineSmall)
-                    }
-                    Button(
-                        onClick = {  },
-                    ){
-                        Text("2", style = MaterialTheme.typography.headlineSmall)
-                    }
-                    Button(
-                        onClick = {  },
-                    ){
-                        Text("3", style = MaterialTheme.typography.headlineSmall)
-                    }
-                    Button(
-                        onClick = {  },
-                    ){
-                        Text("4", style = MaterialTheme.typography.headlineSmall)
-                    }
-                }
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ){
-                    Text(
-                        "⚡\uFE0F Flash",
-                        style = MaterialTheme.typography.headlineSmall,
-                    )
-                    IconButton(
-                        onClick = {  },
-                    ) {
-                        Icon(
-                            imageVector = Icons.Filled.Info,
-                            contentDescription = "Info",
-                            modifier = Modifier.size(44.dp)
-                        )
-                    }
-                }
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceAround,
-                ){
-                    Button(
-                        onClick = {  },
-                    ){
-                        Text("1", style = MaterialTheme.typography.headlineSmall)
-                    }
-                    Button(
-                        onClick = {  },
-                    ){
-                        Text("2", style = MaterialTheme.typography.headlineSmall)
-                    }
-                    Button(
-                        onClick = {  },
-                    ){
-                        Text("3", style = MaterialTheme.typography.headlineSmall)
-                    }
-                    Button(
-                        onClick = {  },
-                    ){
-                        Text("4", style = MaterialTheme.typography.headlineSmall)
-                    }
-                }
+                LevelItem(
+                    "\uD83D\uDC22 Calentamiento ",
+                    "Ideal para empezar. Números pequeños, tiempo amplio y pocas operaciones." +
+                            "\nTiempo: 8 s" +
+                            "\n Nivel 1: " +
+                            "\n   - Rango: 1, 20" +
+                            "\n   - Cantidad de operaciones: 5"+
+                            "\n Nivel 2: " +
+                            "\n   - Rango: 1, 50" +
+                            "\n   - Cantidad de operaciones: 5"+
+                            "\n Nivel 3: " +
+                            "\n   - Rango: -50, 50" +
+                            "\n   - Cantidad de operaciones: 10"+
+                            "\n Nivel 4: " +
+                            "\n   - Rango: -100,100" +
+                            "\n   - Cantidad de operaciones: 10"
+                )
+                LevelItem(
+                    "\uD83C\uDFC3\u200D♂\uFE0F Desafío Rápido",
+                    "Un nivel intermedio con números más grandes y menos tiempo para responder." +
+                            "\nTiempo: 5 s" +
+                            "\n Nivel 1: " +
+                            "\n   - Rango: 1, 50" +
+                            "\n   - Cantidad de operaciones: 5"+
+                            "\n Nivel 2: " +
+                            "\n   - Rango: 1, 100" +
+                            "\n   - Cantidad de operaciones: 10"+
+                            "\n Nivel 3: " +
+                            "\n   - Rango: -50, 50" +
+                            "\n   - Cantidad de operaciones: 10"+
+                            "\n Nivel 4: " +
+                            "\n   - Rango: -100,100" +
+                            "\n   - Cantidad de operaciones: 15"
+                )
+                LevelItem(
+                    "\uD83C\uDF29\uFE0F Relámpago",
+                    "Los números aparecen más rápido. Debes estar muy concentrado."+
+                            "\nTiempo: 3 s" +
+                            "\n Nivel 1: " +
+                            "\n   - Rango: 1, 50" +
+                            "\n   - Cantidad de operaciones: 5"+
+                            "\n Nivel 2: " +
+                            "\n   - Rango: 1, 100" +
+                            "\n   - Cantidad de operaciones: 10"+
+                            "\n Nivel 3: " +
+                            "\n   - Rango: -100, 100" +
+                            "\n   - Cantidad de operaciones: 15"+
+                            "\n Nivel 4: " +
+                            "\n   - Rango: -150,150" +
+                            "\n   - Cantidad de operaciones: 20"
+                )
+                LevelItem(
+                    "⚡\uFE0F Flash",
+                    "Modo extremo: operaciones complejas, números grandes y muy poco tiempo."+
+                            "\nTiempo: 1 s" +
+                            "\n Nivel 1: " +
+                            "\n   - Rango: 1, 50" +
+                            "\n   - Cantidad de operaciones: 5"+
+                            "\n Nivel 2: " +
+                            "\n   - Rango: 1, 100" +
+                            "\n   - Cantidad de operaciones: 10"+
+                            "\n Nivel 3: " +
+                            "\n   - Rango: -50, 50" +
+                            "\n   - Cantidad de operaciones: 15"+
+                            "\n Nivel 4: " +
+                            "\n   - Rango: -250,250" +
+                            "\n   - Cantidad de operaciones: 20"
+                )
                 Button(
                     onClick= {}
                 ) {
