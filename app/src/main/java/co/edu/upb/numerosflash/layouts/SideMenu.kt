@@ -19,11 +19,16 @@ fun sideMenu(navController: NavController){
     ModalDrawerSheet(
         modifier = Modifier.width(200.dp)
     ) {
-        Text("Menu", modifier = Modifier.padding(16.dp))
+        Text("Menu", modifier = Modifier.padding(12.dp))
         NavigationDrawerItem(
             label = {Text("Inicio")},
             selected = false,
             onClick = {navController.navigate("home")}
+        )
+        NavigationDrawerItem(
+            label = {Text("Juego")},
+            selected = false,
+            onClick = {navController.navigate("levels")}
         )
         NavigationDrawerItem(
             label = {Text("Instrucciones")},
@@ -33,7 +38,7 @@ fun sideMenu(navController: NavController){
         NavigationDrawerItem(
             label = {Text("Trucos")},
             selected = false,
-            onClick = {navController.navigate("instructions")}
+            onClick = {navController.navigate("tips")}
         )
         NavigationDrawerItem(
             label = {Text("Perfil")},

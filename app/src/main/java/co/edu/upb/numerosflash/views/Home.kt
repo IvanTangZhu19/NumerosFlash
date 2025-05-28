@@ -73,7 +73,7 @@ fun Home(navController: NavController){
                 }
                 Button(
                     modifier = Modifier.width(200.dp),
-                    onClick = {navController.navigate("tricks")},
+                    onClick = {navController.navigate("tips")},
                     shape = RoundedCornerShape(20.dp)
                 ) {
                     Text("Trucos", style = MaterialTheme.typography.bodyLarge)

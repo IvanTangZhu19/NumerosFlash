@@ -21,6 +21,7 @@ import co.edu.upb.numerosflash.views.Instructions
 import co.edu.upb.numerosflash.views.Levels
 import co.edu.upb.numerosflash.views.Multiplayer
 import co.edu.upb.numerosflash.views.Profile
+import co.edu.upb.numerosflash.views.TipsTricks
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,6 +61,9 @@ fun Navigation() {
         }
         composable("profile") {
             Profile(navController)
+        }
+        composable("tips") {
+            TipsTricks(navController)
         }
         composable("levels") {
             Levels(navController)
