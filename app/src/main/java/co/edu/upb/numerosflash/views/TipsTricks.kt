@@ -37,7 +37,7 @@ fun TipsTricks(navController: NavController){
         }
     ) {
         Column(
-            modifier = Modifier.fillMaxWidth().padding(15.dp),
+            modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Header(navController, scope, drawerState)
@@ -82,7 +82,7 @@ fun TipsTricks(navController: NavController){
                         "\uD83D\uDCC8 6. Revisa tus estadísticas\n" +
                         "Mira tus partidas anteriores. ¿En qué tipo de operaciones fallas más? ¿Sumas? ¿Restas? Usa esa información para mejorar.",
                 style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(10.dp)
+                modifier = Modifier.padding(25.dp)
             )
         }
     }

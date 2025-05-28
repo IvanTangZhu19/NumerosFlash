@@ -37,7 +37,7 @@ fun Profile(navController: NavController){
         }
     ) {
         Column(
-            modifier = Modifier.fillMaxWidth().padding(15.dp),
+            modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Header(navController, scope, drawerState)

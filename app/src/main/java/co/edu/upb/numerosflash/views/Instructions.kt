@@ -47,7 +47,7 @@ fun Instructions(navController: NavController){
         }
     ) {
         Column(
-            modifier = Modifier.fillMaxWidth().padding(15.dp),
+            modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Header(navController, scope, drawerState)
@@ -72,7 +72,7 @@ fun Instructions(navController: NavController){
                 )
             }
             Column(
-                modifier = Modifier.padding(10.dp).fillMaxHeight()
+                modifier = Modifier.padding(25.dp).fillMaxHeight()
             ) {
                 Text(
                     "¡Bienvenido a NúmerosFlash! Pon a prueba tu agilidad mental y tu capacidad de concentración en este desafío matemático.\n" +

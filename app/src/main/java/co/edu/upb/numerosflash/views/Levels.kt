@@ -41,8 +41,7 @@ fun Levels(navController: NavController, gameViewModel: Game){
     ) {
         Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(15.dp),
+                .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Header(navController, scope, drawerState)
@@ -54,7 +53,7 @@ fun Levels(navController: NavController, gameViewModel: Game){
             Column(
                 horizontalAlignment = Alignment.Start,
                 modifier = Modifier
-                    .padding(10.dp)
+                    .padding(25.dp)
                     .fillMaxHeight(),
                 verticalArrangement = Arrangement.spacedBy(15.dp)
             ){
