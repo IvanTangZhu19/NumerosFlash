@@ -1,22 +1,15 @@
 package co.edu.upb.numerosflash.views
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Info
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.DrawerValue
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Text
@@ -30,6 +23,9 @@ import androidx.navigation.NavController
 import co.edu.upb.numerosflash.layouts.Header
 import co.edu.upb.numerosflash.layouts.LevelItem
 import co.edu.upb.numerosflash.layouts.sideMenu
+import co.edu.upb.numerosflash.models.Difficulty
+import co.edu.upb.numerosflash.models.Level
+import androidx.compose.foundation.lazy.items
 
 @Composable
 fun Levels(navController: NavController){
@@ -43,7 +39,9 @@ fun Levels(navController: NavController){
         }
     ) {
         Column(
-            modifier = Modifier.fillMaxWidth().padding(15.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(15.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Header(navController, scope, drawerState)
@@ -54,77 +52,34 @@ fun Levels(navController: NavController){
                 )
             Column(
                 horizontalAlignment = Alignment.Start,
-                modifier = Modifier.padding(10.dp).fillMaxHeight(),
+                modifier = Modifier
+                    .padding(10.dp)
+                    .fillMaxHeight(),
                 verticalArrangement = Arrangement.spacedBy(15.dp)
             ){
-                LevelItem(
-                    "\uD83D\uDC22 Calentamiento ",
-                    "Ideal para empezar. Números pequeños, tiempo amplio y pocas operaciones." +
-                            "\nTiempo: 8 s" +
-                            "\n Nivel 1: " +
-                            "\n   - Rango: 1, 20" +
-                            "\n   - Cantidad de operaciones: 5"+
-                            "\n Nivel 2: " +
-                            "\n   - Rango: 1, 50" +
-                            "\n   - Cantidad de operaciones: 5"+
-                            "\n Nivel 3: " +
-                            "\n   - Rango: -50, 50" +
-                            "\n   - Cantidad de operaciones: 10"+
-                            "\n Nivel 4: " +
-                            "\n   - Rango: -100,100" +
-                            "\n   - Cantidad de operaciones: 10"
-                )
-                LevelItem(
-                    "\uD83C\uDFC3\u200D♂\uFE0F Desafío Rápido",
-                    "Un nivel intermedio con números más grandes y menos tiempo para responder." +
-                            "\nTiempo: 5 s" +
-                            "\n Nivel 1: " +
-                            "\n   - Rango: 1, 50" +
-                            "\n   - Cantidad de operaciones: 5"+
-                            "\n Nivel 2: " +
-                            "\n   - Rango: 1, 100" +
-                            "\n   - Cantidad de operaciones: 10"+
-                            "\n Nivel 3: " +
-                            "\n   - Rango: -50, 50" +
-                            "\n   - Cantidad de operaciones: 10"+
-                            "\n Nivel 4: " +
-                            "\n   - Rango: -100,100" +
-                            "\n   - Cantidad de operaciones: 15"
-                )
-                LevelItem(
-                    "\uD83C\uDF29\uFE0F Relámpago",
-                    "Los números aparecen más rápido. Debes estar muy concentrado."+
-                            "\nTiempo: 3 s" +
-                            "\n Nivel 1: " +
-                            "\n   - Rango: 1, 50" +
-                            "\n   - Cantidad de operaciones: 5"+
-                            "\n Nivel 2: " +
-                            "\n   - Rango: 1, 100" +
-                            "\n   - Cantidad de operaciones: 10"+
-                            "\n Nivel 3: " +
-                            "\n   - Rango: -100, 100" +
-                            "\n   - Cantidad de operaciones: 15"+
-                            "\n Nivel 4: " +
-                            "\n   - Rango: -150,150" +
-                            "\n   - Cantidad de operaciones: 20"
-                )
-                LevelItem(
-                    "⚡\uFE0F Flash",
-                    "Modo extremo: operaciones complejas, números grandes y muy poco tiempo."+
-                            "\nTiempo: 1 s" +
-                            "\n Nivel 1: " +
-                            "\n   - Rango: 1, 50" +
-                            "\n   - Cantidad de operaciones: 5"+
-                            "\n Nivel 2: " +
-                            "\n   - Rango: 1, 100" +
-                            "\n   - Cantidad de operaciones: 10"+
-                            "\n Nivel 3: " +
-                            "\n   - Rango: -50, 50" +
-                            "\n   - Cantidad de operaciones: 15"+
-                            "\n Nivel 4: " +
-                            "\n   - Rango: -250,250" +
-                            "\n   - Cantidad de operaciones: 20"
-                )
+                LazyColumn(
+                    verticalArrangement = Arrangement.spacedBy(18.dp)
+                ) {
+                    items(dificultades) { index ->
+                        LevelItem(
+                            index.titulo,
+                            index.descripcion + "\n" +
+                                    "Tiempo: ${index.levels[0].tiempo} segundos}" +
+                                    "Nivel ${index.levels[0].id}" +
+                                    "  - Rango: ${index.levels[0].rangoMin} - ${index.levels[0].rangoMax}" +
+                                    "  - Operaciones: ${index.levels[0].numOperaciones}" +
+                                    "Nivel ${index.levels[1].id}" +
+                                    "  - Rango: ${index.levels[1].rangoMin} - ${index.levels[1].rangoMax}" +
+                                    "  - Operaciones: ${index.levels[1].numOperaciones}" +
+                                    "Nivel ${index.levels[2].id}" +
+                                    "  - Rango: ${index.levels[2].rangoMin} - ${index.levels[2].rangoMax}" +
+                                    "  - Operaciones: ${index.levels[2].numOperaciones}" +
+                                    "Nivel ${index.levels[3].id}" +
+                                    "  - Rango: ${index.levels[3].rangoMin} - ${index.levels[3].rangoMax}" +
+                                    "  - Operaciones: ${index.levels[3].numOperaciones}"
+                        )
+                    }
+                }
                 Button(
                     onClick= {}
                 ) {
@@ -134,3 +89,46 @@ fun Levels(navController: NavController){
         }
     }
 }
+
+val dificultades = listOf<Difficulty>(
+    Difficulty(
+        "\uD83D\uDC22 Calentamiento",
+        "Ideal para empezar. Números pequeños, tiempo amplio y pocas operaciones.",
+        listOf<Level>(
+            Level(1, 1, 20, 8, 5),
+            Level(2, 1, 50, 8, 5),
+            Level(3, -50, 50, 8, 10),
+            Level(4, -100, 100, 8, 10)
+        )
+    ),
+    Difficulty(
+        "\uD83C\uDFC3\u200D♂\uFE0F Desafío Rápido",
+        "Un nivel intermedio con números más grandes y menos tiempo para responder.",
+        listOf<Level>(
+            Level(1, 1, 20, 5, 5),
+            Level(2, 1, 50, 5, 10),
+            Level(3, -50, 50, 5, 15),
+            Level(4, -100, 100, 5, 15)
+        )
+    ),
+    Difficulty(
+        "\uD83C\uDF29\uFE0F Relámpago",
+        "Los números aparecen más rápido. Debes estar muy concentrado.",
+        listOf<Level>(
+            Level(1, 1, 50, 5, 5),
+            Level(2, 1, 100, 5, 5),
+            Level(3, -50, 50, 5, 10),
+            Level(4, -150, 150, 5, 15)
+        )
+    ),
+    Difficulty(
+        "⚡\uFE0F Flash",
+        "Modo extremo: operaciones complejas, números grandes y muy poco tiempo.",
+        listOf<Level>(
+            Level(1, 1, 50, 1, 10),
+            Level(2, 1, 100, 1, 10),
+            Level(3, -100, 100, 1, 15),
+            Level(4, -200, 200, 1, 20)
+        )
+    ),
+)
