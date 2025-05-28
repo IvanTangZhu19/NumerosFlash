@@ -77,7 +77,13 @@ fun Levels(navController: NavController, gameViewModel: Game){
                                     "\n  - Operaciones: ${index.levels[2].numOperaciones}" +
                                     "\nNivel ${index.levels[3].id}" +
                                     "\n  - Rango: ${index.levels[3].rangoMin} - ${index.levels[3].rangoMax}" +
-                                    "\n  - Operaciones: ${index.levels[3].numOperaciones}"
+                                    "\n  - Operaciones: ${index.levels[3].numOperaciones}",
+                            navController,
+                            index.levels,
+                            onLevelSelected = { level ->
+                                gameViewModel.seleccionarNivel(level)
+                                navController.navigate("game")
+                            }
                         )
                     }
                 }

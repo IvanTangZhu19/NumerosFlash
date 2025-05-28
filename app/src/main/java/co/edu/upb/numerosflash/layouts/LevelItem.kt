@@ -21,9 +21,17 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import co.edu.upb.numerosflash.models.Level
 
 @Composable
-fun LevelItem(titulo: String, descripcion: String){
+fun LevelItem(
+    titulo: String,
+    descripcion: String,
+    navController: NavController,
+    niveles: List<Level>,
+    onLevelSelected: (Level) -> Unit
+){
     var showDialog by remember { mutableStateOf(false) }
     Row(
         modifier = Modifier.fillMaxWidth(),
@@ -49,25 +57,15 @@ fun LevelItem(titulo: String, descripcion: String){
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceAround,
     ){
-        Button(
-            onClick = {  },
-        ){
-            Text("1", style = MaterialTheme.typography.headlineSmall)
-        }
-        Button(
-            onClick = {  },
-        ){
-            Text("2", style = MaterialTheme.typography.headlineSmall)
-        }
-        Button(
-            onClick = {  },
-        ){
-            Text("3", style = MaterialTheme.typography.headlineSmall)
-        }
-        Button(
-            onClick = {  },
-        ){
-            Text("4", style = MaterialTheme.typography.headlineSmall)
+        niveles.forEach { nivel ->
+            Button(
+                onClick = {onLevelSelected(nivel)}
+            ) {
+                Text(
+                    "${nivel.id}",
+                    style = MaterialTheme.typography.headlineSmall
+                )
+            }
         }
     }
     if (showDialog) {
