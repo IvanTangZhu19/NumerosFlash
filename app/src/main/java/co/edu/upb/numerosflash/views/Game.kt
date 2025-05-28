@@ -40,34 +40,29 @@ fun Game(navController: NavController, gameViewModel: Game){
     var num by remember{ mutableStateOf(TextFieldValue("")) }
     val nivel = gameViewModel.nivel.collectAsState().value
 
-    ModalNavigationDrawer(
-        drawerState = drawerState,
-        drawerContent = {
-            sideMenu(navController)
-        }
-    ) {
-        Column(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Header(navController, scope, drawerState)
-            Spacer(modifier = Modifier.height(20.dp))
-            Box(Modifier.fillMaxWidth().height(200.dp), contentAlignment = Alignment.Center){
-                Text(text="Numero", fontSize = 70.sp)
-            }
-            Text("Escribe la respuesta: ", style = MaterialTheme.typography.bodyLarge)
-            TextField(
-                value = num,
-                onValueChange = { num = it },
-                keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number)
-            )
-            Button(
-                onClick = {
 
-                }
-            ){
-                Text("Validar", style = MaterialTheme.typography.bodyLarge)
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Header(navController, scope, drawerState)
+        Spacer(modifier = Modifier.height(20.dp))
+        Box(Modifier.fillMaxWidth().height(200.dp), contentAlignment = Alignment.Center){
+            Text(text="Numero", fontSize = 70.sp)
+        }
+        Text("Escribe la respuesta: ", style = MaterialTheme.typography.bodyLarge)
+        TextField(
+            value = num,
+            onValueChange = { num = it },
+            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number)
+        )
+        Button(
+            onClick = {
+
             }
+        ){
+            Text("Validar", style = MaterialTheme.typography.bodyLarge)
         }
     }
+
 }

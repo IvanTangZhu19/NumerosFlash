@@ -5,6 +5,7 @@ import androidx.compose.foundation.gestures.DraggableState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -34,7 +35,8 @@ fun Home(navController: NavController){
         drawerState = drawerState,
         drawerContent = {
             sideMenu(navController)
-        }
+        },
+        modifier = Modifier.fillMaxHeight()
     ) {
         Column(
             modifier = Modifier.fillMaxWidth(),

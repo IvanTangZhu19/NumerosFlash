@@ -3,10 +3,13 @@ package co.edu.upb.numerosflash.views
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.DrawerValue
@@ -34,10 +37,13 @@ fun TipsTricks(navController: NavController){
         drawerState = drawerState,
         drawerContent = {
             sideMenu(navController)
-        }
+        },
+        modifier = Modifier.fillMaxHeight()
     ) {
+        val scrollState = rememberScrollState()
         Column(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth()
+                .verticalScroll(scrollState),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Header(navController, scope, drawerState)

@@ -37,7 +37,8 @@ fun Levels(navController: NavController, gameViewModel: Game){
         drawerState = drawerState,
         drawerContent = {
             sideMenu(navController)
-        }
+        },
+        modifier = Modifier.fillMaxHeight()
     ) {
         Column(
             modifier = Modifier

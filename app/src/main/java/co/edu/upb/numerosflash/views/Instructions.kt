@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.DrawerValue
@@ -44,11 +46,14 @@ fun Instructions(navController: NavController){
         drawerState = drawerState,
         drawerContent = {
             sideMenu(navController)
-        }
+        },
+        modifier = Modifier.fillMaxHeight()
     ) {
+        val scrollState = rememberScrollState()
         Column(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally
+            modifier = Modifier.fillMaxWidth()
+                .verticalScroll(scrollState),
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Header(navController, scope, drawerState)
             Spacer(modifier = Modifier.height(20.dp))
