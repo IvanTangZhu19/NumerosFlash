@@ -1,6 +1,7 @@
 package co.edu.upb.numerosflash.layouts
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -20,30 +21,29 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import co.edu.upb.numerosflash.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Composable
 fun Header(navController: NavController, scope: CoroutineScope, drawerState: DrawerState){
     Row (
-        modifier = Modifier.fillMaxWidth().padding(top = 20.dp),
+        modifier = Modifier.fillMaxWidth()
+            .padding(top = 20.dp)
+            .background(MaterialTheme.colorScheme.primary),
         horizontalArrangement = Arrangement.SpaceAround,
         verticalAlignment = Alignment.CenterVertically
     ){
-        /*Image(
+        Image(
             painter = painterResource(id = R.drawable.logo),
             contentDescription = "Logo",
             modifier = Modifier
                 .width(80.dp)
-                .clickable { navController.navigate("home") } // Uso de clickable
-        )*/
-        Text(
-            text = "Logo",
-            style = MaterialTheme.typography.headlineSmall,
-            fontWeight = FontWeight.Bold,
+                .clickable { navController.navigate("credits") } // Uso de clickable
         )
         Text(
             text = "NúmerosFlash",
