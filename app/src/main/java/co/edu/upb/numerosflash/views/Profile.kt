@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -17,6 +19,10 @@ import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,12 +30,42 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import co.edu.upb.numerosflash.layouts.Header
 import co.edu.upb.numerosflash.layouts.sideMenu
+import co.edu.upb.numerosflash.ui.theme.DarkBlue
+import co.edu.upb.numerosflash.ui.theme.Vhite
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.TextButton
+import co.edu.upb.numerosflash.firebase.AuthManager
 
 @Composable
 fun Profile(navController: NavController){
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
+    var showLogoutDialog by remember { mutableStateOf(false) }
 
+    if (showLogoutDialog) {
+        AlertDialog(
+            onDismissRequest = { showLogoutDialog = false },
+            title = { Text("Cerrar sesión") },
+            text = { Text("¿Estás seguro de que quieres cerrar sesión?") },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        AuthManager.signOut()
+                        navController.navigate("login") {
+                            popUpTo("home") { inclusive = true }
+                        }
+                    }
+                ) {
+                    Text("Sí, cerrar sesión")
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showLogoutDialog = false }) {
+                    Text("Cancelar")
+                }
+            }
+        )
+    }
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
@@ -62,6 +98,20 @@ fun Profile(navController: NavController){
                 )
             }
             Text("Nombre: ", style = MaterialTheme.typography.bodyLarge)
+            Button(
+                onClick = {
+                    showLogoutDialog = true
+                },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = DarkBlue,
+                    contentColor = Vhite
+                )
+            ) {
+                Text(
+                    "Cerrar sesión",
+                    style = MaterialTheme.typography.headlineSmall
+                )
+            }
         }
     }
 }
