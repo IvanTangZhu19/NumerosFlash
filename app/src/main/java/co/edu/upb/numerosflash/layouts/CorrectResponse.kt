@@ -14,9 +14,12 @@ import androidx.compose.material3.Text
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import co.edu.upb.numerosflash.ui.theme.DarkBlue
+import co.edu.upb.numerosflash.ui.theme.Vhite
 
 @Composable
 fun CorrectResponse(respuestaUsuario: Int, esAcierto: Boolean, lista_numeros: List<Int>, navController: NavController){
@@ -39,7 +42,9 @@ fun CorrectResponse(respuestaUsuario: Int, esAcierto: Boolean, lista_numeros: Li
         Text("  Tu respuesta fue: $respuestaUsuario", style = MaterialTheme.typography.bodyLarge)
         Spacer(Modifier.height(20.dp))
         LazyVerticalGrid(
-            modifier = Modifier.fillMaxWidth().align(Alignment.CenterHorizontally),
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.CenterHorizontally),
             columns = GridCells.Fixed(3),
         ) {
             items(lista_numeros) { num ->
@@ -52,15 +57,25 @@ fun CorrectResponse(respuestaUsuario: Int, esAcierto: Boolean, lista_numeros: Li
         Spacer(Modifier.height(20.dp))
         Button(
             onClick = {
-
-            }
+                navController.navigate("game")
+            },
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = DarkBlue,
+                contentColor = Vhite
+            )
         ){
             Text("Volver a jugar")
         }
         Button(
             onClick = {
                 navController.navigate("levels")
-            }
+            },
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = DarkBlue,
+                contentColor = Vhite
+            )
         ){
             Text("Ir a dificultades")
         }

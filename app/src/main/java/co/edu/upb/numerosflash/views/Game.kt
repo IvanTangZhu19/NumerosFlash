@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -27,6 +28,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import co.edu.upb.numerosflash.layouts.CorrectResponse
 import co.edu.upb.numerosflash.layouts.Header
+import co.edu.upb.numerosflash.ui.theme.DarkBlue
+import co.edu.upb.numerosflash.ui.theme.Vhite
 import co.edu.upb.numerosflash.viewmodels.GameViewModel
 import kotlinx.coroutines.delay
 
@@ -93,19 +96,21 @@ fun Game(navController: NavController, gameViewModel: GameViewModel){
                 val numeroActual = lista_numeros.getOrNull(indice)
                 if(numeroActual != null){
                     Text(
-                        modifier = Modifier.align(Alignment.CenterHorizontally).height(200.dp),
+                        modifier = Modifier.align(Alignment.CenterHorizontally).height(400.dp),
                         text= lista_numeros[indice].toString(),
-                        fontSize = 120.sp
+                        fontSize = 130.sp
                     )
                 }
             }
             mostrarInput ->{
                 Text("Escribe la respuesta: ", style = MaterialTheme.typography.bodyLarge)
+                Spacer(Modifier.height(15.dp))
                 TextField(
                     value = respuesta,
                     onValueChange = { respuesta = it },
                     keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number)
                 )
+                Spacer(Modifier.height(15.dp))
                 Button(
                     onClick = {
                         val respuestaCorrecta = lista_numeros.sum()
@@ -113,7 +118,11 @@ fun Game(navController: NavController, gameViewModel: GameViewModel){
                         esAcierto = respuestaInt == respuestaCorrecta
                         validado = true
                         mostrarInput = false
-                    }
+                    },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = DarkBlue,
+                        contentColor = Vhite
+                    )
                 ){
                     Text("Validar", style = MaterialTheme.typography.bodyLarge)
                 }
