@@ -1,5 +1,6 @@
 package co.edu.upb.numerosflash.views
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,6 +23,8 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -57,6 +60,7 @@ fun Game(navController: NavController, gameViewModel: GameViewModel){
 
     var mensajeInicio by remember { mutableStateOf("¿Estás listo?") }
     var juegoIniciado by remember { mutableStateOf(false) }
+    var contador by remember { mutableStateOf(10) }
 
     LaunchedEffect(Unit){
         //Cuenta regresiva para empezar
@@ -79,6 +83,21 @@ fun Game(navController: NavController, gameViewModel: GameViewModel){
         mostrarInput = true
     }
 
+    LaunchedEffect(mostrarInput){
+        if(mostrarInput){
+            for (i in 10 downTo 1){
+                contador = i
+                delay(1000L)
+            }
+            if(!validado){
+                validado = true
+                respuesta = "0"
+                esAcierto = false
+                mostrarInput = false
+            }
+        }
+    }
+
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -95,15 +114,27 @@ fun Game(navController: NavController, gameViewModel: GameViewModel){
             indice < cantidadOperaciones && mostrarNumero -> {
                 val numeroActual = lista_numeros.getOrNull(indice)
                 if(numeroActual != null){
-                    Text(
-                        modifier = Modifier.align(Alignment.CenterHorizontally).height(400.dp),
-                        text= lista_numeros[indice].toString(),
-                        fontSize = 130.sp
-                    )
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(400.dp),
+                        contentAlignment = Alignment.Center
+                    ){
+                        Text(
+                            text = numeroActual.toString(),
+                            fontSize = 140.sp
+                        )
+                    }
                 }
             }
             mostrarInput ->{
                 Text("Escribe la respuesta: ", style = MaterialTheme.typography.bodyLarge)
+                Spacer(Modifier.height(10.dp))
+                Text(
+                    "⏱️ Tiempo restante: $contador s",
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = if(contador <=3) Color.Red else White
+                )
                 Spacer(Modifier.height(15.dp))
                 TextField(
                     value = respuesta,
