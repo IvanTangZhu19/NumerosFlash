@@ -77,7 +77,7 @@ fun Game(navController: NavController, gameViewModel: GameViewModel){
                 Text(
                     modifier = Modifier.align(Alignment.CenterHorizontally).height(200.dp),
                     text= lista_numeros[indice].toString(),
-                    fontSize = 70.sp
+                    fontSize = 120.sp
                 )
             }
         } else if (mostrarInput){
@@ -100,7 +100,7 @@ fun Game(navController: NavController, gameViewModel: GameViewModel){
             }
         }
         if (validado && respuesta.isNotEmpty()){
-            CorrectResponse(esAcierto, lista_numeros, navController)
+            CorrectResponse(respuesta.toInt(), esAcierto, lista_numeros, navController)
         }
     }
 }
