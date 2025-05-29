@@ -41,14 +41,35 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import co.edu.upb.numerosflash.R
+import co.edu.upb.numerosflash.firebase.AuthManager
 import co.edu.upb.numerosflash.ui.theme.DarkBlue
 import co.edu.upb.numerosflash.ui.theme.Vhite
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.TextButton
+import androidx.compose.ui.graphics.Color
 
 @Composable
 fun Login(navController: NavController){
     var email by remember{ mutableStateOf("") }
     var contraseña by remember{ mutableStateOf("") }
     var contraseñaVisible by remember { mutableStateOf(false) }
+    var errorMessage by remember { mutableStateOf<String?>(null) }
+    var showErrorDialog by remember { mutableStateOf(false) }
+    var isLoading by remember { mutableStateOf(false) }
+
+    if (showErrorDialog) {
+        AlertDialog(
+            onDismissRequest = { showErrorDialog = false },
+            title = { Text("Error") },
+            text = { Text(errorMessage ?: "Ha ocurrido un error") },
+            confirmButton = {
+                TextButton(onClick = { showErrorDialog = false }) {
+                    Text("Aceptar")
+                }
+            }
+        )
+    }
     Column (
         modifier = Modifier.fillMaxWidth().padding(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -103,7 +124,35 @@ fun Login(navController: NavController){
         )
         Spacer(modifier = Modifier.height(15.dp))
         Button(
-            onClick = {navController.navigate("home")},
+            onClick = {
+                if (email.isEmpty() || contraseña.isEmpty()) {
+                    errorMessage = "Por favor, completa todos los campos"
+                    showErrorDialog = true
+                    return@Button
+                }
+                isLoading = true
+                errorMessage = null
+                AuthManager.signIn(
+                    email = email,
+                    password = contraseña,
+                    onSuccess = { user ->
+                        isLoading = false
+                        navController.navigate("home") {
+                            popUpTo("login") { inclusive = true }
+                        }
+                    },
+                    onError = { error ->
+                        isLoading = false
+                        errorMessage = when (error) {
+                            "The email address is badly formatted." -> "El formato del correo electrónico no es válido"
+                            "The password is invalid or the user does not have a password." -> "Contraseña incorrecta"
+                            "There is no user record corresponding to this identifier." -> "No existe una cuenta con este correo electrónico"
+                            else -> "Error al iniciar sesión: $error"
+                        }
+                        showErrorDialog = true
+                    }
+                )
+            },
             modifier = Modifier.width(170.dp),
             shape = RoundedCornerShape(20.dp),
             colors = ButtonDefaults.buttonColors(
@@ -111,7 +160,14 @@ fun Login(navController: NavController){
                 contentColor = Vhite
             )
         ) {
-            Text("Inicar Sesión", style = MaterialTheme.typography.bodyLarge)
+            if (isLoading) {
+                CircularProgressIndicator(
+                    modifier = Modifier.size(24.dp),
+                    color = Color.White
+                )
+            } else {
+                Text("Inicar Sesión", style = MaterialTheme.typography.bodyLarge)
+            }
         }
         Button(
             onClick = { navController.navigate("register") },
