@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import co.edu.upb.numerosflash.ui.theme.DarkBlue
+import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
 import co.edu.upb.numerosflash.ui.theme.Vhite
 
 @Composable
@@ -26,20 +27,34 @@ fun CorrectResponse(respuestaUsuario: Int, esAcierto: Boolean, lista_numeros: Li
     Column(
         modifier = Modifier.fillMaxWidth().padding(25.dp)
     ) {
-        Text("La respuesta es: ", style = MaterialTheme.typography.headlineSmall)
+        Text(
+            "La respuesta es: ",
+            style = MaterialTheme.typography.headlineSmall,
+            fontFamily = KanitFontFamily
+        )
         Spacer(Modifier.height(20.dp))
         Text(
             "${lista_numeros.sum()}",
             fontSize = 120.sp,
-            modifier = Modifier.align(Alignment.CenterHorizontally)
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            fontFamily = KanitFontFamily
         )
         if(esAcierto){
-            Text("¡Acertaste!", style = MaterialTheme.typography.headlineSmall)
+            Text(
+                "¡Acertaste!",
+                style = MaterialTheme.typography.headlineSmall,
+                fontFamily = KanitFontFamily)
         } else {
-            Text("Lo siento, fallaste. Intentalo de nuevo", style = MaterialTheme.typography.headlineSmall)
+            Text(
+                "¡Fallaste!. Intentalo de nuevo",
+                style = MaterialTheme.typography.headlineSmall,
+                fontFamily = KanitFontFamily)
         }
         Spacer(Modifier.height(10.dp))
-        Text("  Tu respuesta fue: $respuestaUsuario", style = MaterialTheme.typography.bodyLarge)
+        Text(
+            "  Tu respuesta fue: $respuestaUsuario",
+            style = MaterialTheme.typography.bodyLarge,
+            fontFamily = KanitFontFamily)
         Spacer(Modifier.height(20.dp))
         LazyVerticalGrid(
             modifier = Modifier
@@ -50,7 +65,8 @@ fun CorrectResponse(respuestaUsuario: Int, esAcierto: Boolean, lista_numeros: Li
             items(lista_numeros) { num ->
                 Text(
                     num.toString(),
-                    style = MaterialTheme.typography.headlineSmall
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontFamily = KanitFontFamily
                 )
             }
         }
@@ -65,7 +81,11 @@ fun CorrectResponse(respuestaUsuario: Int, esAcierto: Boolean, lista_numeros: Li
                 contentColor = Vhite
             )
         ){
-            Text("Volver a jugar")
+            Text(
+                "Volver a jugar",
+                style = MaterialTheme.typography.bodyLarge,
+                fontFamily = KanitFontFamily
+            )
         }
         Button(
             onClick = {
@@ -77,7 +97,10 @@ fun CorrectResponse(respuestaUsuario: Int, esAcierto: Boolean, lista_numeros: Li
                 contentColor = Vhite
             )
         ){
-            Text("Ir a dificultades")
+            Text(
+                "Ir a dificultades",
+                style = MaterialTheme.typography.bodyLarge,
+                fontFamily = KanitFontFamily)
         }
     }
 }

@@ -32,6 +32,7 @@ import androidx.navigation.NavController
 import co.edu.upb.numerosflash.layouts.CorrectResponse
 import co.edu.upb.numerosflash.layouts.Header
 import co.edu.upb.numerosflash.ui.theme.DarkBlue
+import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
 import co.edu.upb.numerosflash.ui.theme.Vhite
 import co.edu.upb.numerosflash.viewmodels.GameViewModel
 import kotlinx.coroutines.delay
@@ -108,7 +109,8 @@ fun Game(navController: NavController, gameViewModel: GameViewModel){
             !juegoIniciado -> {
                 Text(
                     mensajeInicio,
-                    fontSize = 45.sp
+                    fontSize = 45.sp,
+                    fontFamily = KanitFontFamily
                 )
             }
             indice < cantidadOperaciones && mostrarNumero -> {
@@ -122,18 +124,22 @@ fun Game(navController: NavController, gameViewModel: GameViewModel){
                     ){
                         Text(
                             text = numeroActual.toString(),
-                            fontSize = 140.sp
+                            fontSize = 140.sp,
+                            fontFamily = KanitFontFamily
                         )
                     }
                 }
             }
             mostrarInput ->{
-                Text("Escribe la respuesta: ", style = MaterialTheme.typography.bodyLarge)
+                Text("Escribe la respuesta: ",
+                    style = MaterialTheme.typography.bodyLarge,
+                    fontFamily = KanitFontFamily)
                 Spacer(Modifier.height(10.dp))
                 Text(
                     "⏱️ Tiempo restante: $contador s",
                     style = MaterialTheme.typography.bodyLarge,
-                    color = if(contador <=3) Color.Red else White
+                    color = if(contador <=3) Color.Red else White,
+                    fontFamily = KanitFontFamily
                 )
                 Spacer(Modifier.height(15.dp))
                 TextField(
@@ -155,7 +161,10 @@ fun Game(navController: NavController, gameViewModel: GameViewModel){
                         contentColor = Vhite
                     )
                 ){
-                    Text("Validar", style = MaterialTheme.typography.bodyLarge)
+                    Text(
+                        "Validar",
+                        style = MaterialTheme.typography.bodyLarge,
+                        fontFamily = KanitFontFamily)
                 }
             }
             validado && respuesta.isNotEmpty() ->{

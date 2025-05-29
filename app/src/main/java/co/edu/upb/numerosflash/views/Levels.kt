@@ -25,6 +25,7 @@ import co.edu.upb.numerosflash.layouts.sideMenu
 import co.edu.upb.numerosflash.models.Difficulty
 import co.edu.upb.numerosflash.models.Level
 import androidx.compose.foundation.lazy.items
+import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
 import co.edu.upb.numerosflash.viewmodels.GameViewModel
 
 @Composable
@@ -49,6 +50,7 @@ fun Levels(navController: NavController, gameViewModel: GameViewModel){
                 Text(
                     "Selecciona la dificultad",
                     style = MaterialTheme.typography.headlineMedium,
+                    fontFamily = KanitFontFamily
                 )
             Column(
                 horizontalAlignment = Alignment.Start,

@@ -48,6 +48,8 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.TextButton
 import androidx.compose.ui.graphics.Color
+import co.edu.upb.numerosflash.ui.theme.Amarrillo
+import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
 
 @Composable
 fun Login(navController: NavController){
@@ -61,11 +63,13 @@ fun Login(navController: NavController){
     if (showErrorDialog) {
         AlertDialog(
             onDismissRequest = { showErrorDialog = false },
-            title = { Text("Error") },
+            title = { Text("Error",
+                fontFamily = KanitFontFamily) },
             text = { Text(errorMessage ?: "Ha ocurrido un error") },
             confirmButton = {
                 TextButton(onClick = { showErrorDialog = false }) {
-                    Text("Aceptar")
+                    Text("Aceptar",
+                        fontFamily = KanitFontFamily)
                 }
             }
         )
@@ -85,18 +89,22 @@ fun Login(navController: NavController){
             "NumerosFlash",
             style = MaterialTheme.typography.headlineLarge,
             fontWeight = FontWeight.Bold,
+            color = Amarrillo,
+            fontFamily = KanitFontFamily
         )
         Spacer(modifier = Modifier.height(15.dp))
         Text(
             "Recuerda, calcula... ¡y gana en un flash!",
             style = MaterialTheme.typography.bodyLarge,
-            fontStyle = FontStyle.Italic
+            fontStyle = FontStyle.Italic,
+            fontFamily = KanitFontFamily
         )
         Spacer(modifier = Modifier.height(15.dp))
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("Correo") },
+            label = { Text("Correo",
+                fontFamily = KanitFontFamily) },
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
             leadingIcon = {Icon(Icons.Default.Email, contentDescription = "correo")},
@@ -105,7 +113,8 @@ fun Login(navController: NavController){
         OutlinedTextField(
             value = contraseña,
             onValueChange = { contraseña = it },
-            label = {Text("Contraseña")},
+            label = {Text("Contraseña",
+                fontFamily = KanitFontFamily)},
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
             leadingIcon = {Icon(Icons.Default.Lock, contentDescription = "contraseña")},
@@ -166,7 +175,11 @@ fun Login(navController: NavController){
                     color = Color.White
                 )
             } else {
-                Text("Inicar Sesión", style = MaterialTheme.typography.bodyLarge)
+                Text(
+                    "Inicar Sesión",
+                    style = MaterialTheme.typography.bodyLarge,
+                    fontFamily = KanitFontFamily
+                )
             }
         }
         Button(
@@ -178,7 +191,10 @@ fun Login(navController: NavController){
                 contentColor = Vhite
             )
         ) {
-            Text("Registro", style = MaterialTheme.typography.bodyLarge)
+            Text(
+                "Registro",
+                style = MaterialTheme.typography.bodyLarge,
+                fontFamily = KanitFontFamily)
         }
     }
 

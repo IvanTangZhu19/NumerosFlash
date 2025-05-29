@@ -35,6 +35,7 @@ import co.edu.upb.numerosflash.ui.theme.Vhite
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.TextButton
 import co.edu.upb.numerosflash.firebase.AuthManager
+import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
 
 @Composable
 fun Profile(navController: NavController){
@@ -45,8 +46,10 @@ fun Profile(navController: NavController){
     if (showLogoutDialog) {
         AlertDialog(
             onDismissRequest = { showLogoutDialog = false },
-            title = { Text("Cerrar sesión") },
-            text = { Text("¿Estás seguro de que quieres cerrar sesión?") },
+            title = { Text("Cerrar sesión",
+                fontFamily = KanitFontFamily) },
+            text = { Text("¿Estás seguro de que quieres cerrar sesión?",
+                fontFamily = KanitFontFamily) },
             confirmButton = {
                 TextButton(
                     onClick = {
@@ -56,7 +59,8 @@ fun Profile(navController: NavController){
                         }
                     }
                 ) {
-                    Text("Sí, cerrar sesión")
+                    Text("Sí, cerrar sesión",
+                        fontFamily = KanitFontFamily)
                 }
             },
             dismissButton = {
@@ -94,10 +98,14 @@ fun Profile(navController: NavController){
                 Text(
                     "Perfil",
                     style = MaterialTheme.typography.headlineMedium,
-                    modifier = Modifier.align(Alignment.Center)
+                    modifier = Modifier.align(Alignment.Center),
+                    fontFamily = KanitFontFamily
                 )
             }
-            Text("Nombre: ", style = MaterialTheme.typography.bodyLarge)
+            Text(
+                "Nombre: ",
+                style = MaterialTheme.typography.bodyLarge,
+                fontFamily = KanitFontFamily)
             Button(
                 onClick = {
                     showLogoutDialog = true
@@ -109,7 +117,8 @@ fun Profile(navController: NavController){
             ) {
                 Text(
                     "Cerrar sesión",
-                    style = MaterialTheme.typography.headlineSmall
+                    style = MaterialTheme.typography.bodyLarge,
+                    fontFamily = KanitFontFamily
                 )
             }
         }

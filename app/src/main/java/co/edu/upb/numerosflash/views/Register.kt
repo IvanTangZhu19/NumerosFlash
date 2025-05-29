@@ -43,6 +43,8 @@ import androidx.navigation.NavController
 import co.edu.upb.numerosflash.R
 import androidx.compose.material3.AlertDialog
 import co.edu.upb.numerosflash.firebase.AuthManager
+import co.edu.upb.numerosflash.ui.theme.Amarrillo
+import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
 
 @Composable
 fun Register(navController: NavController){
@@ -70,12 +72,15 @@ fun Register(navController: NavController){
             "NumerosFlash",
             style = MaterialTheme.typography.headlineLarge,
             fontWeight = FontWeight.Bold,
+            color = Amarrillo,
+            fontFamily = KanitFontFamily
         )
         Spacer(modifier = Modifier.height(15.dp))
         Text(
             "Recuerda, calcula... ¡y gana en un flash!",
             style = MaterialTheme.typography.bodyLarge,
-            fontStyle = FontStyle.Italic
+            fontStyle = FontStyle.Italic,
+            fontFamily = KanitFontFamily
         )
         Spacer(modifier = Modifier.height(15.dp))
         OutlinedTextField(
@@ -152,14 +157,19 @@ fun Register(navController: NavController){
             modifier = Modifier.width(170.dp),
             shape = RoundedCornerShape(20.dp)
         ) {
-            Text("Registrarse", style = MaterialTheme.typography.bodyLarge)
+            Text(
+                "Registrarse",
+                style = MaterialTheme.typography.bodyLarge,
+                fontFamily = KanitFontFamily)
         }
     }
     if (showErrorDialog) {
         AlertDialog(
             onDismissRequest = { showErrorDialog = false },
-            title = { Text("Error") },
-            text = { Text(errorMessage ?: "Ha ocurrido un error") },
+            title = { Text("Error",
+                fontFamily = KanitFontFamily) },
+            text = { Text(errorMessage ?: "Ha ocurrido un error",
+                fontFamily = KanitFontFamily) },
             confirmButton = {
                 TextButton(onClick = { showErrorDialog = false }) {
                     Text("Aceptar")

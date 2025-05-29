@@ -84,5 +84,8 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-storage")
 
+    //Para fuentes
+    implementation("androidx.compose.ui:ui-text-google-fonts")
+
 }
 apply(plugin = "com.google.gms.google-services")

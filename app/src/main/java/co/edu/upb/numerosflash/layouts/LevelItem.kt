@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import co.edu.upb.numerosflash.models.Level
 import co.edu.upb.numerosflash.ui.theme.DarkBlue
+import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
 import co.edu.upb.numerosflash.ui.theme.Vhite
 
 @Composable
@@ -46,6 +47,7 @@ fun LevelItem(
         Text(
             titulo,
             style = MaterialTheme.typography.headlineSmall,
+            fontFamily = KanitFontFamily
         )
         IconButton(
             onClick = { showDialog = true },
@@ -73,7 +75,8 @@ fun LevelItem(
             ) {
                 Text(
                     "${nivel.id}",
-                    style = MaterialTheme.typography.headlineSmall
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontFamily = KanitFontFamily
                 )
             }
         }
@@ -82,10 +85,13 @@ fun LevelItem(
     if (showDialog) {
         AlertDialog(
             onDismissRequest = { showDialog = false },
-            title = { Text(titulo) },
-            text = { Text(descripcion) },
+            title = { Text(titulo,
+                fontFamily = KanitFontFamily) },
+            text = { Text(descripcion,
+                fontFamily = KanitFontFamily) },
             confirmButton = {
-                TextButton(onClick={ showDialog = false }) { Text("Cerrar")}
+                TextButton(onClick={ showDialog = false }) { Text("Cerrar",
+                    fontFamily = KanitFontFamily)}
             }
         )
     }

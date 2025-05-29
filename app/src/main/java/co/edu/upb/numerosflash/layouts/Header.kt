@@ -24,6 +24,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import co.edu.upb.numerosflash.R
+import co.edu.upb.numerosflash.ui.theme.Amarrillo
+import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -46,7 +48,9 @@ fun Header(navController: NavController, scope: CoroutineScope, drawerState: Dra
             text = "NúmerosFlash",
             style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.clickable { navController.navigate("credits") }
+            modifier = Modifier.clickable { navController.navigate("credits") },
+            color = Amarrillo,
+            fontFamily = KanitFontFamily
         )
         IconButton(
             onClick = {

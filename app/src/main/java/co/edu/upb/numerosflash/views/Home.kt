@@ -26,13 +26,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import co.edu.upb.numerosflash.R
+import co.edu.upb.numerosflash.ui.theme.Amarrillo
 import co.edu.upb.numerosflash.ui.theme.DarkBlue
+import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
 import co.edu.upb.numerosflash.ui.theme.Vhite
 
 @Composable
 fun Home(navController: NavController){
-    val drawerState = rememberDrawerState(DrawerValue.Closed)
-    val scope = rememberCoroutineScope()
     Column (
         modifier = Modifier.fillMaxWidth().padding(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -48,12 +48,15 @@ fun Home(navController: NavController){
             "NumerosFlash",
             style = MaterialTheme.typography.headlineLarge,
             fontWeight = FontWeight.Bold,
+            color = Amarrillo,
+            fontFamily = KanitFontFamily
         )
         Spacer(modifier = Modifier.height(15.dp))
         Text(
             "Recuerda, calcula... ¡y gana en un flash!",
             style = MaterialTheme.typography.bodyLarge,
-            fontStyle = FontStyle.Italic
+            fontStyle = FontStyle.Italic,
+            fontFamily = KanitFontFamily
         )
         Spacer(modifier = Modifier.height(15.dp))
         Button(
@@ -65,7 +68,10 @@ fun Home(navController: NavController){
                 contentColor = Vhite
             )
         ) {
-            Text("Jugar", style = MaterialTheme.typography.bodyLarge)
+            Text(
+                "Jugar",
+                style = MaterialTheme.typography.bodyLarge,
+                fontFamily = KanitFontFamily)
         }
         Button(
             modifier = Modifier.width(200.dp),
@@ -76,7 +82,10 @@ fun Home(navController: NavController){
                 contentColor = Vhite
             )
         ) {
-            Text("Multijugador", style = MaterialTheme.typography.bodyLarge)
+            Text(
+                "Multijugador",
+                fontFamily = KanitFontFamily,
+                style = MaterialTheme.typography.bodyLarge)
         }
         Button(
             modifier = Modifier.width(200.dp),
@@ -87,7 +96,11 @@ fun Home(navController: NavController){
                 contentColor = Vhite
             )
         ) {
-            Text("Instrucciones", style = MaterialTheme.typography.bodyLarge)
+            Text(
+                "Instrucciones",
+                style = MaterialTheme.typography.bodyLarge,
+                fontFamily = KanitFontFamily
+            )
         }
         Button(
             modifier = Modifier.width(200.dp),
@@ -98,7 +111,10 @@ fun Home(navController: NavController){
                 contentColor = Vhite
             )
         ) {
-            Text("Trucos", style = MaterialTheme.typography.bodyLarge)
+            Text(
+                "Trucos",
+                style = MaterialTheme.typography.bodyLarge,
+                fontFamily = KanitFontFamily)
         }
         Button(
             modifier = Modifier.width(200.dp),
@@ -109,32 +125,11 @@ fun Home(navController: NavController){
                 contentColor = Vhite
             )
         ) {
-            Text("Perfil", style = MaterialTheme.typography.bodyLarge)
+            Text(
+                "Perfil",
+                style = MaterialTheme.typography.bodyLarge,
+                fontFamily = KanitFontFamily
+            )
         }
     }
-    /*ModalNavigationDrawer(
-        drawerState = drawerState,
-        drawerContent = {
-            sideMenu(navController)
-        },
-        modifier = Modifier.fillMaxHeight()
-    ) {
-        Column(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ){
-            Header(navController, scope, drawerState)
-            Spacer(modifier = Modifier.height(20.dp))
-            Text(
-                "Inicio",
-                style = MaterialTheme.typography.headlineMedium
-            )
-            Spacer(Modifier.height(30.dp))
-            Column (
-                verticalArrangement = Arrangement.spacedBy(15.dp)
-            ){
-
-            }
-        }
-    }*/
 }
