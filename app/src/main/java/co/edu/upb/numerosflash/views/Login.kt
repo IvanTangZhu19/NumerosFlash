@@ -33,6 +33,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -65,7 +66,8 @@ fun Login(navController: NavController){
         Spacer(modifier = Modifier.height(15.dp))
         Text(
             "Recuerda, calcula... ¡y gana en un flash!",
-            style = MaterialTheme.typography.bodyLarge
+            style = MaterialTheme.typography.bodyLarge,
+            fontStyle = FontStyle.Italic
         )
         Spacer(modifier = Modifier.height(15.dp))
         OutlinedTextField(
