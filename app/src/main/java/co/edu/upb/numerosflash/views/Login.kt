@@ -18,6 +18,8 @@ import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -37,6 +39,8 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import co.edu.upb.numerosflash.R
+import co.edu.upb.numerosflash.ui.theme.DarkBlue
+import co.edu.upb.numerosflash.ui.theme.Vhite
 
 @Composable
 fun Login(navController: NavController){
@@ -97,14 +101,22 @@ fun Login(navController: NavController){
         Button(
             onClick = {navController.navigate("home")},
             modifier = Modifier.width(170.dp),
-            shape = RoundedCornerShape(20.dp)
+            shape = RoundedCornerShape(20.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = DarkBlue,
+                contentColor = Vhite
+            )
         ) {
             Text("Inicar Sesión", style = MaterialTheme.typography.bodyLarge)
         }
         Button(
             onClick = { navController.navigate("register") },
             modifier = Modifier.width(170.dp),
-            shape = RoundedCornerShape(20.dp)
+            shape = RoundedCornerShape(20.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = DarkBlue,
+                contentColor = Vhite
+            )
         ) {
             Text("Registro", style = MaterialTheme.typography.bodyLarge)
         }

@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalNavigationDrawer
@@ -25,6 +26,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import co.edu.upb.numerosflash.layouts.Header
 import co.edu.upb.numerosflash.layouts.sideMenu
+import co.edu.upb.numerosflash.ui.theme.DarkBlue
+import co.edu.upb.numerosflash.ui.theme.Vhite
 
 @Composable
 fun Home(navController: NavController){
@@ -55,35 +58,55 @@ fun Home(navController: NavController){
                 Button(
                     modifier = Modifier.width(200.dp),
                     onClick = {navController.navigate("Levels")},
-                    shape = RoundedCornerShape(20.dp)
+                    shape = RoundedCornerShape(20.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = DarkBlue,
+                        contentColor = Vhite
+                    )
                 ) {
                     Text("Jugar", style = MaterialTheme.typography.bodyLarge)
                 }
                 Button(
                     modifier = Modifier.width(200.dp),
                     onClick = {navController.navigate("multiplayer")},
-                    shape = RoundedCornerShape(20.dp)
+                    shape = RoundedCornerShape(20.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = DarkBlue,
+                        contentColor = Vhite
+                    )
                 ) {
                     Text("Multijugador", style = MaterialTheme.typography.bodyLarge)
                 }
                 Button(
                     modifier = Modifier.width(200.dp),
                     onClick = {navController.navigate("instructions")},
-                    shape = RoundedCornerShape(20.dp)
+                    shape = RoundedCornerShape(20.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = DarkBlue,
+                        contentColor = Vhite
+                    )
                 ) {
                     Text("Instrucciones", style = MaterialTheme.typography.bodyLarge)
                 }
                 Button(
                     modifier = Modifier.width(200.dp),
                     onClick = {navController.navigate("tips")},
-                    shape = RoundedCornerShape(20.dp)
+                    shape = RoundedCornerShape(20.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = DarkBlue,
+                        contentColor = Vhite
+                    )
                 ) {
                     Text("Trucos", style = MaterialTheme.typography.bodyLarge)
                 }
                 Button(
                     modifier = Modifier.width(200.dp),
                     onClick = {navController.navigate("profile")},
-                    shape = RoundedCornerShape(20.dp)
+                    shape = RoundedCornerShape(20.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = DarkBlue,
+                        contentColor = Vhite
+                    )
                 ) {
                     Text("Perfil", style = MaterialTheme.typography.bodyLarge)
                 }
