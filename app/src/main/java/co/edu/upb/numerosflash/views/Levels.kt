@@ -61,7 +61,7 @@ fun Levels(navController: NavController, gameViewModel: GameViewModel){
                         LevelItem(
                             index.titulo,
                             index.descripcion + "\n" +
-                                    "Tiempo: ${index.levels[0].tiempo} segundos}" +
+                                    "Tiempo: ${index.levels[0].tiempo} segundos\n" +
                                     "\nNivel ${index.levels[0].id}" +
                                     "\n  - Rango: ${index.levels[0].rangoMin} - ${index.levels[0].rangoMax}" +
                                     "\n  - Operaciones: ${index.levels[0].numOperaciones}" +
@@ -83,11 +83,11 @@ fun Levels(navController: NavController, gameViewModel: GameViewModel){
                         )
                     }
                 }
-                Button(
+                /*Button(
                     onClick= {}
                 ) {
                     Text("Personalizado", style = MaterialTheme.typography.bodyLarge)
-                }
+                }*/
             }
         }
     }

@@ -1,6 +1,5 @@
 package co.edu.upb.numerosflash.views
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -53,13 +52,25 @@ fun Game(navController: NavController, gameViewModel: GameViewModel){
     var esAcierto by remember {mutableStateOf(false)}
     var validado by remember {mutableStateOf(false)}
 
+    var mensajeInicio by remember { mutableStateOf("¿Estás listo?") }
+    var juegoIniciado by remember { mutableStateOf(false) }
+
     LaunchedEffect(Unit){
+        //Cuenta regresiva para empezar
+        val mensajes = listOf("¿Estás listo?", "Empieza en...", "3", "2", "1", "¡YA!")
+        for (i in mensajes) {
+            mensajeInicio = i
+            delay(1000L)
+        }
+        juegoIniciado = true
+
+        //Genera los numeros aleatoriamente. Aqui suce el juego
         lista_numeros = List(cantidadOperaciones){ rango.random()}
         for(i in 0 until cantidadOperaciones){
             mostrarNumero = true
             delay(tiempo)
             mostrarNumero = false
-            delay(500L)
+            delay(300L)
             indice++
         }
         mostrarInput = true
@@ -71,36 +82,45 @@ fun Game(navController: NavController, gameViewModel: GameViewModel){
     ) {
         Header(navController, scope, drawerState)
         Spacer(modifier = Modifier.height(20.dp))
-        if(indice < cantidadOperaciones && mostrarNumero){
-            val numeroActual = lista_numeros.getOrNull(indice)
-            if(numeroActual != null){
+        when{
+            !juegoIniciado -> {
                 Text(
-                    modifier = Modifier.align(Alignment.CenterHorizontally).height(200.dp),
-                    text= lista_numeros[indice].toString(),
-                    fontSize = 120.sp
+                    mensajeInicio,
+                    fontSize = 45.sp
                 )
             }
-        } else if (mostrarInput){
-            Text("Escribe la respuesta: ", style = MaterialTheme.typography.bodyLarge)
-            TextField(
-                value = respuesta,
-                onValueChange = { respuesta = it },
-                keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number)
-            )
-            Button(
-                onClick = {
-                    val respuestaCorrecta = lista_numeros.sum()
-                    val respuestaInt = respuesta.toIntOrNull()
-                    esAcierto = respuestaInt == respuestaCorrecta
-                    validado = true
-                    mostrarInput = false
+            indice < cantidadOperaciones && mostrarNumero -> {
+                val numeroActual = lista_numeros.getOrNull(indice)
+                if(numeroActual != null){
+                    Text(
+                        modifier = Modifier.align(Alignment.CenterHorizontally).height(200.dp),
+                        text= lista_numeros[indice].toString(),
+                        fontSize = 120.sp
+                    )
                 }
-            ){
-                Text("Validar", style = MaterialTheme.typography.bodyLarge)
             }
-        }
-        if (validado && respuesta.isNotEmpty()){
-            CorrectResponse(respuesta.toInt(), esAcierto, lista_numeros, navController)
+            mostrarInput ->{
+                Text("Escribe la respuesta: ", style = MaterialTheme.typography.bodyLarge)
+                TextField(
+                    value = respuesta,
+                    onValueChange = { respuesta = it },
+                    keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number)
+                )
+                Button(
+                    onClick = {
+                        val respuestaCorrecta = lista_numeros.sum()
+                        val respuestaInt = respuesta.toIntOrNull()
+                        esAcierto = respuestaInt == respuestaCorrecta
+                        validado = true
+                        mostrarInput = false
+                    }
+                ){
+                    Text("Validar", style = MaterialTheme.typography.bodyLarge)
+                }
+            }
+            validado && respuesta.isNotEmpty() ->{
+                CorrectResponse(respuesta.toInt(), esAcierto, lista_numeros, navController)
+            }
         }
     }
 }
