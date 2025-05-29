@@ -24,6 +24,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -40,6 +41,8 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import co.edu.upb.numerosflash.R
+import androidx.compose.material3.AlertDialog
+import co.edu.upb.numerosflash.firebase.AuthManager
 
 @Composable
 fun Register(navController: NavController){
@@ -47,6 +50,11 @@ fun Register(navController: NavController){
     var usuario by remember{ mutableStateOf("") }
     var contraseña by remember{ mutableStateOf("") }
     var contraseñaVisible by remember { mutableStateOf(false) }
+
+    var errorMessage by remember { mutableStateOf<String?>(null) }
+    var showErrorDialog by remember { mutableStateOf(false) }
+    var isLoading by remember { mutableStateOf(false) }
+
     Column (
         modifier = Modifier.fillMaxWidth().padding(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -110,12 +118,53 @@ fun Register(navController: NavController){
         )
         Spacer(modifier = Modifier.height(15.dp))
         Button(
-            onClick = { navController.navigate("login") },
+            onClick = {
+                if (usuario.isEmpty() || email.isEmpty() || contraseña.isEmpty()) {
+                    errorMessage = "Por favor, completa todos los campos"
+                    showErrorDialog = true
+                    return@Button
+                }
+
+                errorMessage = null
+                AuthManager.register(
+                    email = email,
+                    password = contraseña,
+                    username = usuario,
+                    onSuccess = { user ->
+                        isLoading = false
+                        navController.navigate("home") {
+                            popUpTo("login") { inclusive = true }
+                        }
+                    },
+                    onError = { error ->
+                        isLoading = false
+                        errorMessage = when (error) {
+                            "The email address is badly formatted." -> "El formato del correo electrónico no es válido"
+                            "The password must be 6 characters long or more." -> "La contraseña debe tener al menos 6 caracteres"
+                            "The email address is already in use by another account." -> "Este correo electrónico ya está registrado"
+                            else -> "Error al registrar: $error"
+                        }
+                        showErrorDialog = true
+                    }
+                )
+                //navController.navigate("login")
+            },
             modifier = Modifier.width(170.dp),
             shape = RoundedCornerShape(20.dp)
         ) {
             Text("Registrarse", style = MaterialTheme.typography.bodyLarge)
         }
     }
-
+    if (showErrorDialog) {
+        AlertDialog(
+            onDismissRequest = { showErrorDialog = false },
+            title = { Text("Error") },
+            text = { Text(errorMessage ?: "Ha ocurrido un error") },
+            confirmButton = {
+                TextButton(onClick = { showErrorDialog = false }) {
+                    Text("Aceptar")
+                }
+            }
+        )
+    }
 }

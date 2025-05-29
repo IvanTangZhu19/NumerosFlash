@@ -19,6 +19,10 @@ android {
     namespace = "co.edu.upb.numerosflash"
     compileSdk = 35
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     defaultConfig {
         applicationId = "co.edu.upb.numerosflash"
         minSdk = 24
@@ -81,3 +85,4 @@ dependencies {
     implementation("com.google.firebase:firebase-storage")
 
 }
+apply(plugin = "com.google.gms.google-services")
