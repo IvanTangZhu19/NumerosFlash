@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "57731578509",
+    "project_id": "prueba-de9c7",
+    "storage_bucket": "prueba-de9c7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:57731578509:android:f37ebd4d04e96b5da6c0c4",
+        "android_client_info": {
+          "package_name": "co.edu.upb.numerosflash"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": BuildConfig.FIREBASE_API_KEY
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
