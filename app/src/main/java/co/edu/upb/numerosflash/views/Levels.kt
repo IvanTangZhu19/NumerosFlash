@@ -1,6 +1,5 @@
 package co.edu.upb.numerosflash.views
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -26,10 +25,10 @@ import co.edu.upb.numerosflash.layouts.sideMenu
 import co.edu.upb.numerosflash.models.Difficulty
 import co.edu.upb.numerosflash.models.Level
 import androidx.compose.foundation.lazy.items
-import co.edu.upb.numerosflash.viewmodels.Game
+import co.edu.upb.numerosflash.viewmodels.GameViewModel
 
 @Composable
-fun Levels(navController: NavController, gameViewModel: Game){
+fun Levels(navController: NavController, gameViewModel: GameViewModel){
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
 
