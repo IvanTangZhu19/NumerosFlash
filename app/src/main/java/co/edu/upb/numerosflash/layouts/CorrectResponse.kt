@@ -18,6 +18,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import co.edu.upb.numerosflash.sounds.SoundManager
 import co.edu.upb.numerosflash.ui.theme.DarkBlue
 import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
 import co.edu.upb.numerosflash.ui.theme.Vhite
@@ -40,11 +41,13 @@ fun CorrectResponse(respuestaUsuario: Int, esAcierto: Boolean, lista_numeros: Li
             fontFamily = KanitFontFamily
         )
         if(esAcierto){
+            SoundManager.reproducirAplausos()
             Text(
                 "¡Acertaste!",
                 style = MaterialTheme.typography.headlineSmall,
                 fontFamily = KanitFontFamily)
         } else {
+            SoundManager.reproducirIncorrecto()
             Text(
                 "¡Fallaste!. Inténtalo de nuevo",
                 style = MaterialTheme.typography.headlineSmall,

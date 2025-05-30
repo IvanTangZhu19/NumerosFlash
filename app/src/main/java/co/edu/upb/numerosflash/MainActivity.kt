@@ -32,10 +32,12 @@ import co.edu.upb.numerosflash.views.Multiplayer
 import co.edu.upb.numerosflash.views.Profile
 import co.edu.upb.numerosflash.views.TipsTricks
 import androidx.compose.runtime.getValue
+import co.edu.upb.numerosflash.sounds.SoundManager
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        SoundManager.initSoundPool(this)
         enableEdgeToEdge()
         setContent {
             NumerosFlashTheme {
