@@ -1,12 +1,27 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.gms.google-services")
 }
+
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localProperties.load(localPropertiesFile.inputStream())
+}
+
+val firebaseApiKey = localProperties.getProperty("FIREBASE_API_KEY") ?: ""
 
 android {
     namespace = "co.edu.upb.numerosflash"
     compileSdk = 35
+
+    buildFeatures {
+        buildConfig = true
+    }
 
     defaultConfig {
         applicationId = "co.edu.upb.numerosflash"
@@ -14,7 +29,7 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
-
+        buildConfigField("String", "FIREBASE_API_KEY", "\"${firebaseApiKey}\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -63,9 +78,15 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended:1.6.1")
 
     //Para el uso de firebase
-    implementation(platform("com.google.firebase:firebase-bom:32.7.4"))
+    implementation(platform("com.google.firebase:firebase-bom:33.14.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-storage")
+
+    //Para fuentes
+    implementation("androidx.compose.ui:ui-text-google-fonts")
+
+    implementation("androidx.compose.animation:animation:1.6.0")
 }
+apply(plugin = "com.google.gms.google-services")

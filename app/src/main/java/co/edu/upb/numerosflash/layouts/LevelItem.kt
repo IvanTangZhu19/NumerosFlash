@@ -10,6 +10,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -25,6 +26,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import co.edu.upb.numerosflash.models.Level
+import co.edu.upb.numerosflash.ui.theme.DarkBlue
+import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
+import co.edu.upb.numerosflash.ui.theme.Vhite
 
 @Composable
 fun LevelItem(
@@ -43,6 +47,7 @@ fun LevelItem(
         Text(
             titulo,
             style = MaterialTheme.typography.headlineSmall,
+            fontFamily = KanitFontFamily
         )
         IconButton(
             onClick = { showDialog = true },
@@ -62,11 +67,16 @@ fun LevelItem(
     ){
         niveles.forEach { nivel ->
             Button(
-                onClick = {onLevelSelected(nivel)}
+                onClick = {onLevelSelected(nivel)},
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = DarkBlue,
+                    contentColor = Vhite
+                )
             ) {
                 Text(
                     "${nivel.id}",
-                    style = MaterialTheme.typography.headlineSmall
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontFamily = KanitFontFamily
                 )
             }
         }
@@ -75,10 +85,13 @@ fun LevelItem(
     if (showDialog) {
         AlertDialog(
             onDismissRequest = { showDialog = false },
-            title = { Text(titulo) },
-            text = { Text(descripcion) },
+            title = { Text(titulo,
+                fontFamily = KanitFontFamily) },
+            text = { Text(descripcion,
+                fontFamily = KanitFontFamily) },
             confirmButton = {
-                TextButton(onClick={ showDialog = false }) { Text("Cerrar")}
+                TextButton(onClick={ showDialog = false }) { Text("Cerrar",
+                    fontFamily = KanitFontFamily)}
             }
         )
     }

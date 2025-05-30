@@ -18,6 +18,8 @@ import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -31,18 +33,47 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import co.edu.upb.numerosflash.R
+import co.edu.upb.numerosflash.firebase.AuthManager
+import co.edu.upb.numerosflash.ui.theme.DarkBlue
+import co.edu.upb.numerosflash.ui.theme.Vhite
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.TextButton
+import androidx.compose.ui.graphics.Color
+import co.edu.upb.numerosflash.ui.theme.Amarrillo
+import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
 
 @Composable
 fun Login(navController: NavController){
     var email by remember{ mutableStateOf("") }
     var contraseña by remember{ mutableStateOf("") }
     var contraseñaVisible by remember { mutableStateOf(false) }
+    var errorMessage by remember { mutableStateOf<String?>(null) }
+    var showErrorDialog by remember { mutableStateOf(false) }
+    var isLoading by remember { mutableStateOf(false) }
+
+    if (showErrorDialog) {
+        AlertDialog(
+            onDismissRequest = { showErrorDialog = false },
+            title = { Text("Error",
+                fontFamily = KanitFontFamily) },
+            text = { Text(errorMessage ?: "Ha ocurrido un error") },
+            confirmButton = {
+                TextButton(onClick = { showErrorDialog = false }) {
+                    Text("Aceptar",
+                        fontFamily = KanitFontFamily)
+                }
+            }
+        )
+    }
     Column (
         modifier = Modifier.fillMaxWidth().padding(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -55,19 +86,25 @@ fun Login(navController: NavController){
         )
         Spacer(modifier = Modifier.height(15.dp))
         Text(
-            "NumerosFlash",
-            style = MaterialTheme.typography.headlineLarge
+            "NúmerosFlash",
+            style = MaterialTheme.typography.headlineLarge,
+            fontWeight = FontWeight.Bold,
+            color = Amarrillo,
+            fontFamily = KanitFontFamily
         )
         Spacer(modifier = Modifier.height(15.dp))
         Text(
             "Recuerda, calcula... ¡y gana en un flash!",
-            style = MaterialTheme.typography.bodyLarge
+            style = MaterialTheme.typography.bodyLarge,
+            fontStyle = FontStyle.Italic,
+            fontFamily = KanitFontFamily
         )
         Spacer(modifier = Modifier.height(15.dp))
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("Correo") },
+            label = { Text("Correo",
+                fontFamily = KanitFontFamily) },
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
             leadingIcon = {Icon(Icons.Default.Email, contentDescription = "correo")},
@@ -76,7 +113,8 @@ fun Login(navController: NavController){
         OutlinedTextField(
             value = contraseña,
             onValueChange = { contraseña = it },
-            label = {Text("Contraseña")},
+            label = {Text("Contraseña",
+                fontFamily = KanitFontFamily)},
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
             leadingIcon = {Icon(Icons.Default.Lock, contentDescription = "contraseña")},
@@ -95,18 +133,68 @@ fun Login(navController: NavController){
         )
         Spacer(modifier = Modifier.height(15.dp))
         Button(
-            onClick = {navController.navigate("home")},
+            onClick = {
+                if (email.isEmpty() || contraseña.isEmpty()) {
+                    errorMessage = "Por favor, completa todos los campos"
+                    showErrorDialog = true
+                    return@Button
+                }
+                isLoading = true
+                errorMessage = null
+                AuthManager.signIn(
+                    email = email,
+                    password = contraseña,
+                    onSuccess = { user ->
+                        isLoading = false
+                        navController.navigate("home") {
+                            popUpTo("login") { inclusive = true }
+                        }
+                    },
+                    onError = { error ->
+                        isLoading = false
+                        errorMessage = when (error) {
+                            "The email address is badly formatted." -> "El formato del correo electrónico no es válido"
+                            "The password is invalid or the user does not have a password." -> "Contraseña incorrecta"
+                            "There is no user record corresponding to this identifier." -> "No existe una cuenta con este correo electrónico"
+                            else -> "Error al iniciar sesión: $error"
+                        }
+                        showErrorDialog = true
+                    }
+                )
+            },
             modifier = Modifier.width(170.dp),
-            shape = RoundedCornerShape(20.dp)
+            shape = RoundedCornerShape(20.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = DarkBlue,
+                contentColor = Vhite
+            )
         ) {
-            Text("Inicar Sesión", style = MaterialTheme.typography.bodyLarge)
+            if (isLoading) {
+                CircularProgressIndicator(
+                    modifier = Modifier.size(24.dp),
+                    color = Color.White
+                )
+            } else {
+                Text(
+                    "Iniciar Sesión",
+                    style = MaterialTheme.typography.bodyLarge,
+                    fontFamily = KanitFontFamily
+                )
+            }
         }
         Button(
             onClick = { navController.navigate("register") },
             modifier = Modifier.width(170.dp),
-            shape = RoundedCornerShape(20.dp)
+            shape = RoundedCornerShape(20.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = DarkBlue,
+                contentColor = Vhite
+            )
         ) {
-            Text("Registro", style = MaterialTheme.typography.bodyLarge)
+            Text(
+                "Registro",
+                style = MaterialTheme.typography.bodyLarge,
+                fontFamily = KanitFontFamily)
         }
     }
 

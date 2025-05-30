@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import co.edu.upb.numerosflash.layouts.Header
 import co.edu.upb.numerosflash.layouts.sideMenu
+import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
 
 @Composable
 fun Credits(navController: NavController){
@@ -60,10 +61,15 @@ fun Credits(navController: NavController){
                 Text(
                     "Créditos",
                     style = MaterialTheme.typography.headlineMedium,
-                    modifier = Modifier.align(Alignment.Center)
+                    modifier = Modifier.align(Alignment.Center),
+                    fontFamily = KanitFontFamily
                 )
             }
-            Text("Desarrollado por Iván Tang Zhu", style = MaterialTheme.typography.bodyLarge)
+            Text(
+                "Desarrollado por Iván Tang Zhu",
+                style = MaterialTheme.typography.bodyLarge,
+                fontFamily = KanitFontFamily
+            )
         }
     }
 }

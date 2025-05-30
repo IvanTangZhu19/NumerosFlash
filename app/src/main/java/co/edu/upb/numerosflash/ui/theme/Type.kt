@@ -5,6 +5,15 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import co.edu.upb.numerosflash.R
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontStyle
+
+val KanitFontFamily = FontFamily(
+    Font(R.font.kanit_regular, FontWeight.Normal),
+    Font(R.font.kanit_bold, FontWeight.Bold),
+    Font(R.font.kanit_italic, FontWeight.Normal, FontStyle.Italic)
+)
 
 // Set of Material typography styles to start with
 val Typography = Typography(

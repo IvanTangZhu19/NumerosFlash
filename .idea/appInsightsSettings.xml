@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="co.edu.upb.numerosflash" />
+                  <option name="mobileSdkAppId" value="1:57731578509:android:f37ebd4d04e96b5da6c0c4" />
+                  <option name="projectId" value="prueba-de9c7" />
+                  <option name="projectNumber" value="57731578509" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

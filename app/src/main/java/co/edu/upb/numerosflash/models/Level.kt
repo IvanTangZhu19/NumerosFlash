@@ -6,4 +6,5 @@ data class Level(
     var rangoMax: Int,
     var tiempo: Int,
     var numOperaciones: Int,
+    var cancion: Int
 )

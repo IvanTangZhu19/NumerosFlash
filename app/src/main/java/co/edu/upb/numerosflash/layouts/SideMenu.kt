@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
 
 @Composable
 fun sideMenu(navController: NavController){
@@ -21,27 +22,32 @@ fun sideMenu(navController: NavController){
     ) {
         Text("Menu", modifier = Modifier.padding(12.dp))
         NavigationDrawerItem(
-            label = {Text("Inicio")},
+            label = {Text("Inicio",
+                fontFamily = KanitFontFamily)},
             selected = false,
             onClick = {navController.navigate("home")}
         )
         NavigationDrawerItem(
-            label = {Text("Juego")},
+            label = {Text("Juego",
+                fontFamily = KanitFontFamily)},
             selected = false,
             onClick = {navController.navigate("levels")}
         )
         NavigationDrawerItem(
-            label = {Text("Instrucciones")},
+            label = {Text("Instrucciones",
+                fontFamily = KanitFontFamily)},
             selected = false,
             onClick = {navController.navigate("instructions")}
         )
         NavigationDrawerItem(
-            label = {Text("Trucos")},
+            label = {Text("Trucos",
+                fontFamily = KanitFontFamily)},
             selected = false,
             onClick = {navController.navigate("tips")}
         )
         NavigationDrawerItem(
-            label = {Text("Perfil")},
+            label = {Text("Perfil",
+                fontFamily = KanitFontFamily)},
             selected = false,
             onClick = {navController.navigate("profile")}
         )

@@ -25,7 +25,9 @@ import co.edu.upb.numerosflash.layouts.sideMenu
 import co.edu.upb.numerosflash.models.Difficulty
 import co.edu.upb.numerosflash.models.Level
 import androidx.compose.foundation.lazy.items
+import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
 import co.edu.upb.numerosflash.viewmodels.GameViewModel
+import co.edu.upb.numerosflash.R
 
 @Composable
 fun Levels(navController: NavController, gameViewModel: GameViewModel){
@@ -49,6 +51,7 @@ fun Levels(navController: NavController, gameViewModel: GameViewModel){
                 Text(
                     "Selecciona la dificultad",
                     style = MaterialTheme.typography.headlineMedium,
+                    fontFamily = KanitFontFamily
                 )
             Column(
                 horizontalAlignment = Alignment.Start,
@@ -61,7 +64,7 @@ fun Levels(navController: NavController, gameViewModel: GameViewModel){
                         LevelItem(
                             index.titulo,
                             index.descripcion + "\n" +
-                                    "Tiempo: ${index.levels[0].tiempo} segundos}" +
+                                    "Tiempo: ${index.levels[0].tiempo} segundos\n" +
                                     "\nNivel ${index.levels[0].id}" +
                                     "\n  - Rango: ${index.levels[0].rangoMin} - ${index.levels[0].rangoMax}" +
                                     "\n  - Operaciones: ${index.levels[0].numOperaciones}" +
@@ -83,11 +86,11 @@ fun Levels(navController: NavController, gameViewModel: GameViewModel){
                         )
                     }
                 }
-                Button(
+                /*Button(
                     onClick= {}
                 ) {
                     Text("Personalizado", style = MaterialTheme.typography.bodyLarge)
-                }
+                }*/
             }
         }
     }
@@ -98,40 +101,40 @@ val dificultades = listOf<Difficulty>(
         "\uD83D\uDC22 Calentamiento",
         "Ideal para empezar. Números pequeños, tiempo amplio y pocas operaciones.",
         listOf<Level>(
-            Level(1, 1, 20, 8, 5),
-            Level(2, 1, 50, 8, 5),
-            Level(3, -50, 50, 8, 10),
-            Level(4, -100, 100, 8, 10)
+            Level(1, 1, 20, 8, 5, R.raw.cherry_cute),
+            Level(2, 1, 50, 8, 5, R.raw.cherry_cute),
+            Level(3, -50, 50, 8, 10, R.raw.cherry_cute),
+            Level(4, -100, 100, 8, 10, R.raw.cherry_cute)
         )
     ),
     Difficulty(
         "\uD83C\uDFC3\u200D♂\uFE0F Desafío Rápido",
         "Un nivel intermedio con números más grandes y menos tiempo para responder.",
         listOf<Level>(
-            Level(1, 1, 20, 5, 5),
-            Level(2, 1, 50, 5, 10),
-            Level(3, -50, 50, 5, 15),
-            Level(4, -100, 100, 5, 15)
+            Level(1, 1, 20, 5, 5, R.raw.cherry_cute),
+            Level(2, 1, 50, 5, 10, R.raw.cherry_cute),
+            Level(3, -50, 50, 5, 15, R.raw.cherry_cute),
+            Level(4, -100, 100, 5, 15, R.raw.cherry_cute)
         )
     ),
     Difficulty(
         "\uD83C\uDF29\uFE0F Relámpago",
         "Los números aparecen más rápido. Debes estar muy concentrado.",
         listOf<Level>(
-            Level(1, 1, 50, 5, 5),
-            Level(2, 1, 100, 5, 5),
-            Level(3, -50, 50, 5, 10),
-            Level(4, -150, 150, 5, 15)
+            Level(1, 1, 50, 5, 5, R.raw.the_flute_song),
+            Level(2, 1, 100, 5, 5, R.raw.the_flute_song),
+            Level(3, -50, 50, 5, 10, R.raw.the_flute_song),
+            Level(4, -150, 150, 5, 15, R.raw.the_flute_song)
         )
     ),
     Difficulty(
         "⚡\uFE0F Flash",
         "Modo extremo: operaciones complejas, números grandes y muy poco tiempo.",
         listOf<Level>(
-            Level(1, 1, 50, 1, 10),
-            Level(2, 1, 100, 1, 10),
-            Level(3, -100, 100, 1, 15),
-            Level(4, -200, 200, 1, 20)
+            Level(1, 1, 50, 1, 10, R.raw.the_flute_song),
+            Level(2, 1, 100, 1, 10, R.raw.the_flute_song),
+            Level(3, -100, 100, 1, 15, R.raw.the_flute_song),
+            Level(4, -200, 200, 1, 20, R.raw.the_flute_song)
         )
     ),
 )

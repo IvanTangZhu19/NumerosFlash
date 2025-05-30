@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import co.edu.upb.numerosflash.layouts.Header
 import co.edu.upb.numerosflash.layouts.sideMenu
+import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
 
 @Composable
 fun Instructions(navController: NavController){
@@ -73,7 +74,8 @@ fun Instructions(navController: NavController){
                 Text(
                     "Instrucciones",
                     style = MaterialTheme.typography.headlineMedium,
-                    modifier = Modifier.align(Alignment.Center)
+                    modifier = Modifier.align(Alignment.Center),
+                    fontFamily = KanitFontFamily
                 )
             }
             Column(
@@ -87,13 +89,15 @@ fun Instructions(navController: NavController){
                             "\n" +
                             "\uD83D\uDCCB ¿Cómo se juega?\n",
                     style = MaterialTheme.typography.bodyLarge,
-                    textAlign = TextAlign.Justify
+                    textAlign = TextAlign.Justify,
+                    fontFamily = KanitFontFamily
                 )
                 instrucciones.forEachIndexed { index, texto ->
                     Text(
                         text="${index + 1}. $texto",
                         style = MaterialTheme.typography.bodyLarge,
-                        modifier = Modifier.padding(start = 16.dp, bottom = 8.dp)
+                        modifier = Modifier.padding(start = 16.dp, bottom = 8.dp),
+                        fontFamily = KanitFontFamily
                     )
                 }
                 Text(
@@ -103,7 +107,8 @@ fun Instructions(navController: NavController){
                             "\n" +
                             "Multijugador: Compite en tiempo real con otros jugadores. ¡Gana el más rápido y preciso!",
                     style = MaterialTheme.typography.bodyLarge,
-                    textAlign = TextAlign.Justify
+                    textAlign = TextAlign.Justify,
+                    fontFamily = KanitFontFamily
                 )
             }
         }

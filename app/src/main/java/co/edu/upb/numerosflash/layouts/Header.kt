@@ -6,13 +6,11 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -26,6 +24,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import co.edu.upb.numerosflash.R
+import co.edu.upb.numerosflash.ui.theme.Amarrillo
+import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -33,8 +33,7 @@ import kotlinx.coroutines.launch
 fun Header(navController: NavController, scope: CoroutineScope, drawerState: DrawerState){
     Row (
         modifier = Modifier.fillMaxWidth()
-            .padding(top = 20.dp)
-            .background(MaterialTheme.colorScheme.primary),
+            .padding(20.dp),
         horizontalArrangement = Arrangement.SpaceAround,
         verticalAlignment = Alignment.CenterVertically
     ){
@@ -49,7 +48,9 @@ fun Header(navController: NavController, scope: CoroutineScope, drawerState: Dra
             text = "NúmerosFlash",
             style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.clickable { navController.navigate("credits") }
+            modifier = Modifier.clickable { navController.navigate("credits") },
+            color = Amarrillo,
+            fontFamily = KanitFontFamily
         )
         IconButton(
             onClick = {

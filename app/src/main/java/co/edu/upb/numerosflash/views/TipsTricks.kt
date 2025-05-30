@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import co.edu.upb.numerosflash.layouts.Header
 import co.edu.upb.numerosflash.layouts.sideMenu
+import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
 
 @Composable
 fun TipsTricks(navController: NavController){
@@ -64,7 +65,8 @@ fun TipsTricks(navController: NavController){
                 Text(
                     "Trucos y consejos",
                     style = MaterialTheme.typography.headlineMedium,
-                    modifier = Modifier.align(Alignment.Center)
+                    modifier = Modifier.align(Alignment.Center),
+                    fontFamily = KanitFontFamily
                 )
             }
             Text(
@@ -88,7 +90,8 @@ fun TipsTricks(navController: NavController){
                         "\uD83D\uDCC8 6. Revisa tus estadísticas\n" +
                         "Mira tus partidas anteriores. ¿En qué tipo de operaciones fallas más? ¿Sumas? ¿Restas? Usa esa información para mejorar.",
                 style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(25.dp)
+                modifier = Modifier.padding(25.dp),
+                fontFamily = KanitFontFamily
             )
         }
     }
