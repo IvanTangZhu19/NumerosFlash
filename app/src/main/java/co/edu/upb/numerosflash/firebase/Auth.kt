@@ -5,6 +5,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -82,18 +83,35 @@ object AuthManager {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Log.d(TAG, "createUserWithEmail:success")
-                        // Actualizar el perfil con el nombre de usuario
+
                         val profileUpdates = UserProfileChangeRequest.Builder()
                             .setDisplayName(username)
                             .build()
 
-                        auth.currentUser?.updateProfile(profileUpdates)
+                        val user = auth.currentUser
+                        user?.updateProfile(profileUpdates)
                             ?.addOnCompleteListener { profileTask ->
-                                if (profileTask.isSuccessful) {
-                                    auth.currentUser?.let { user ->
-                                        _authState.value = user
-                                        onSuccess(user)
-                                    }
+                                if (profileTask.isSuccessful && user != null) {
+                                    // 🔥 Crear documento en Firestore
+                                    val db = Firebase.firestore
+                                    val userData = hashMapOf(
+                                        "usuario" to username,
+                                        "correo" to email,
+                                        "partidasGanadas" to 0,
+                                        "partidasJugadas" to 0
+                                    )
+
+                                    db.collection("USERS").document(user.uid)
+                                        .set(userData)
+                                        .addOnSuccessListener {
+                                            Log.d(TAG, "Documento de usuario creado correctamente")
+                                            _authState.value = user
+                                            onSuccess(user)
+                                        }
+                                        .addOnFailureListener { e ->
+                                            Log.e(TAG, "Error al crear documento de usuario", e)
+                                            onError("Error al guardar los datos del usuario")
+                                        }
                                 } else {
                                     onError("Error al actualizar el perfil")
                                 }
