@@ -73,7 +73,7 @@ fun Home(navController: NavController){
                 style = MaterialTheme.typography.bodyLarge,
                 fontFamily = KanitFontFamily)
         }
-        Button(
+        /*Button(
             modifier = Modifier.width(200.dp),
             onClick = {navController.navigate("multiplayer")},
             shape = RoundedCornerShape(20.dp),
@@ -85,8 +85,9 @@ fun Home(navController: NavController){
             Text(
                 "Multijugador",
                 fontFamily = KanitFontFamily,
-                style = MaterialTheme.typography.bodyLarge)
-        }
+                style = MaterialTheme.typography.bodyLarge
+            )
+        }*/
         Button(
             modifier = Modifier.width(200.dp),
             onClick = {navController.navigate("instructions")},

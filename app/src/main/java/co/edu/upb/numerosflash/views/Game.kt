@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import co.edu.upb.numerosflash.layouts.CorrectResponse
 import co.edu.upb.numerosflash.layouts.Header
+import co.edu.upb.numerosflash.ui.theme.Amarrillo
 import co.edu.upb.numerosflash.ui.theme.DarkBlue
 import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
 import co.edu.upb.numerosflash.ui.theme.Vhite
@@ -125,7 +126,8 @@ fun Game(navController: NavController, gameViewModel: GameViewModel){
                         Text(
                             text = numeroActual.toString(),
                             fontSize = 140.sp,
-                            fontFamily = KanitFontFamily
+                            fontFamily = KanitFontFamily,
+                            color = Amarrillo,
                         )
                     }
                 }
