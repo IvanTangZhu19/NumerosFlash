@@ -33,11 +33,13 @@ import co.edu.upb.numerosflash.views.Profile
 import co.edu.upb.numerosflash.views.TipsTricks
 import androidx.compose.runtime.getValue
 import co.edu.upb.numerosflash.sounds.SoundManager
+import co.edu.upb.numerosflash.sounds.MusicManager
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         SoundManager.initSoundPool(this)
+        MusicManager.play(this, R.raw.cherry_cute)
         enableEdgeToEdge()
         setContent {
             NumerosFlashTheme {
@@ -48,6 +50,10 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        MusicManager.stop()
     }
 }
 

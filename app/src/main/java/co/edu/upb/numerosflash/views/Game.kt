@@ -25,18 +25,22 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import co.edu.upb.numerosflash.R
 import co.edu.upb.numerosflash.layouts.CorrectResponse
 import co.edu.upb.numerosflash.layouts.Header
+import co.edu.upb.numerosflash.sounds.MusicManager
 import co.edu.upb.numerosflash.ui.theme.Amarrillo
 import co.edu.upb.numerosflash.ui.theme.DarkBlue
 import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
 import co.edu.upb.numerosflash.ui.theme.Vhite
 import co.edu.upb.numerosflash.viewmodels.GameViewModel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
 fun Game(navController: NavController, gameViewModel: GameViewModel){
@@ -106,6 +110,8 @@ fun Game(navController: NavController, gameViewModel: GameViewModel){
     ) {
         Header(navController, scope, drawerState)
         Spacer(modifier = Modifier.height(20.dp))
+        val context = LocalContext.current
+        MusicManager.play(context, nivel.cancion)
         when{
             !juegoIniciado -> {
                 Text(
@@ -170,7 +176,12 @@ fun Game(navController: NavController, gameViewModel: GameViewModel){
                 }
             }
             validado && respuesta.isNotEmpty() ->{
+                MusicManager.stop()
                 CorrectResponse(respuesta.toInt(), esAcierto, lista_numeros, navController)
+                LaunchedEffect(validado) {
+                    delay(5000L)
+                    MusicManager.play(context, R.raw.cherry_cute)
+                }
             }
         }
     }

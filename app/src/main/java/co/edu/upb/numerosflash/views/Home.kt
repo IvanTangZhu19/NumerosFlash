@@ -45,7 +45,7 @@ fun Home(navController: NavController){
         )
         Spacer(modifier = Modifier.height(15.dp))
         Text(
-            "NumerosFlash",
+            "NúmerosFlash",
             style = MaterialTheme.typography.headlineLarge,
             fontWeight = FontWeight.Bold,
             color = Amarrillo,
