@@ -9,6 +9,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import androidx.compose.runtime.State
+import com.google.firebase.firestore.FieldValue
 
 class UserViewModel : ViewModel() {
 
@@ -35,5 +36,36 @@ class UserViewModel : ViewModel() {
         }.addOnFailureListener { exception ->
             Log.e("UserViewModel", "Error al obtener usuario", exception)
         }
+    }
+    fun actualizarEstadisticas(gano: Boolean) {
+        val db = Firebase.firestore
+        val userID = AuthManager.getCurrentUser()?.uid
+        if (userID == null) {
+            Log.w("UserViewModel", "Usuario no autenticado")
+            return
+        }
+        var actualizaciones: Map<String, Any>
+
+        val docRef = db.collection("USERS").document(userID)
+        if (gano){
+            actualizaciones = mapOf(
+                "partidasGanadas" to FieldValue.increment(1),
+                "partidasJugadas" to FieldValue.increment(1)
+            )
+        } else {
+            actualizaciones = mapOf(
+                "partidasGanadas" to FieldValue.increment(0),
+                "partidasJugadas" to FieldValue.increment(1)
+            )
+        }
+
+
+        docRef.update(actualizaciones)
+            .addOnSuccessListener {
+                Log.d("UserViewModel", "Estadísticas actualizadas: $actualizaciones")
+            }
+            .addOnFailureListener { e ->
+                Log.e("UserViewModel", "Error al actualizar estadísticas", e)
+            }
     }
 }

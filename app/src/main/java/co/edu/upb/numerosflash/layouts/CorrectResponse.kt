@@ -22,9 +22,15 @@ import co.edu.upb.numerosflash.sounds.SoundManager
 import co.edu.upb.numerosflash.ui.theme.DarkBlue
 import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
 import co.edu.upb.numerosflash.ui.theme.Vhite
+import co.edu.upb.numerosflash.viewmodels.UserViewModel
 
 @Composable
-fun CorrectResponse(respuestaUsuario: Int, esAcierto: Boolean, lista_numeros: List<Int>, navController: NavController){
+fun CorrectResponse(respuestaUsuario: Int,
+                    esAcierto: Boolean,
+                    lista_numeros: List<Int>,
+                    navController: NavController,
+                    userViewModel: UserViewModel
+    ){
     Column(
         modifier = Modifier.fillMaxWidth().padding(25.dp)
     ) {
@@ -42,12 +48,14 @@ fun CorrectResponse(respuestaUsuario: Int, esAcierto: Boolean, lista_numeros: Li
         )
         if(esAcierto){
             SoundManager.reproducirAplausos()
+            userViewModel.actualizarEstadisticas(true)
             Text(
                 "¡Acertaste!",
                 style = MaterialTheme.typography.headlineSmall,
                 fontFamily = KanitFontFamily)
         } else {
             SoundManager.reproducirIncorrecto()
+            userViewModel.actualizarEstadisticas(false)
             Text(
                 "¡Fallaste!. Inténtalo de nuevo",
                 style = MaterialTheme.typography.headlineSmall,

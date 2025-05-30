@@ -110,7 +110,7 @@ fun Navigation() {
             Levels(navController, gameViewModel)
         }
         composable("game") {
-            Game(navController, gameViewModel)
+            Game(navController, gameViewModel, userViewModel)
         }
         composable("multiplayer") {
             Multiplayer(navController)

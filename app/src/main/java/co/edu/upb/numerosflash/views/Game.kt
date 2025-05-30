@@ -45,10 +45,11 @@ import co.edu.upb.numerosflash.ui.theme.DarkBlue
 import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
 import co.edu.upb.numerosflash.ui.theme.Vhite
 import co.edu.upb.numerosflash.viewmodels.GameViewModel
+import co.edu.upb.numerosflash.viewmodels.UserViewModel
 import kotlinx.coroutines.delay
 
 @Composable
-fun Game(navController: NavController, gameViewModel: GameViewModel){
+fun Game(navController: NavController, gameViewModel: GameViewModel, userViewModel: UserViewModel){
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     val nivel = gameViewModel.nivel.collectAsState().value
@@ -170,7 +171,7 @@ fun Game(navController: NavController, gameViewModel: GameViewModel){
             }
             validado && respuesta.isNotEmpty() ->{
                 MusicManager.stop()
-                CorrectResponse(respuesta.toInt(), esAcierto, lista_numeros, navController)
+                CorrectResponse(respuesta.toInt(), esAcierto, lista_numeros, navController, userViewModel)
                 LaunchedEffect(validado) {
                     delay(5000L)
                     MusicManager.play(context, R.raw.cherry_cute)
