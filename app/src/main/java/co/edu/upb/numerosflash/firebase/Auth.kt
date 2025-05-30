@@ -127,4 +127,7 @@ object AuthManager {
             Log.e(TAG, "Error al cerrar sesión", e)
         }
     }
+    fun getUsername(): String {
+        return auth.currentUser?.displayName ?: "Usuario"
+    }
 }

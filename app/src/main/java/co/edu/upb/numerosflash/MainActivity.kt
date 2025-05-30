@@ -16,6 +16,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import co.edu.upb.numerosflash.ui.theme.NumerosFlashTheme
 import co.edu.upb.numerosflash.viewmodels.GameViewModel
+import co.edu.upb.numerosflash.viewmodels.UserViewModel
 import co.edu.upb.numerosflash.views.Credits
 import co.edu.upb.numerosflash.views.Game
 import co.edu.upb.numerosflash.views.Home
@@ -47,6 +48,7 @@ class MainActivity : ComponentActivity() {
 fun Navigation() {
     val navController = rememberNavController()
     val gameViewModel: GameViewModel = viewModel()
+    val userViewModel: UserViewModel = viewModel()
     NavHost(
         navController = navController,
         startDestination = "login",
@@ -69,7 +71,7 @@ fun Navigation() {
             Instructions(navController)
         }
         composable("profile") {
-            Profile(navController)
+            Profile(navController, userViewModel)
         }
         composable("tips") {
             TipsTricks(navController)

@@ -176,7 +176,7 @@ fun Login(navController: NavController){
                 )
             } else {
                 Text(
-                    "Inicar Sesión",
+                    "Iniciar Sesión",
                     style = MaterialTheme.typography.bodyLarge,
                     fontFamily = KanitFontFamily
                 )

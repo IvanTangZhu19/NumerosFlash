@@ -34,14 +34,22 @@ import co.edu.upb.numerosflash.ui.theme.DarkBlue
 import co.edu.upb.numerosflash.ui.theme.Vhite
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.TextButton
+import androidx.compose.runtime.LaunchedEffect
 import co.edu.upb.numerosflash.firebase.AuthManager
 import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
+import co.edu.upb.numerosflash.viewmodels.UserViewModel
 
 @Composable
-fun Profile(navController: NavController){
+fun Profile(navController: NavController, viewModel: UserViewModel){
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     var showLogoutDialog by remember { mutableStateOf(false) }
+    val username = AuthManager.getUsername()
+
+    LaunchedEffect(Unit) {
+        viewModel.getUser()
+    }
+    val usuario = viewModel.usuario.value
 
     if (showLogoutDialog) {
         AlertDialog(
@@ -102,10 +110,42 @@ fun Profile(navController: NavController){
                     fontFamily = KanitFontFamily
                 )
             }
-            Text(
-                "Nombre: ",
-                style = MaterialTheme.typography.bodyLarge,
-                fontFamily = KanitFontFamily)
+            if (usuario != null) {
+                Text(
+                    "Nombre: ${usuario.usuario}",
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontFamily = KanitFontFamily
+                )
+                Spacer(Modifier.height(15.dp))
+                Text(
+                    "Correo: ${usuario.correo}",
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontFamily = KanitFontFamily
+                )
+                Spacer(Modifier.height(30.dp))
+                Text(
+                    "Partidas jugadas: ${usuario.partidasJugadas}",
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontFamily = KanitFontFamily
+                )
+                Spacer(Modifier.height(15.dp))
+                Text(
+                    "Partidas ganadas: ${usuario.partidasGanadas}",
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontFamily = KanitFontFamily
+                )
+                Spacer(Modifier.height(15.dp))
+                /*Text(
+                    "Porcentaje de partidas ganadas: ${usuario.partidasGanadas / usuario.partidasJugadas } %",
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontFamily = KanitFontFamily
+                )*/
+            }
+            /*Text(
+                "Nombre por auth: ${username}",
+                style = MaterialTheme.typography.headlineSmall,
+                fontFamily = KanitFontFamily
+            )*/
             Button(
                 onClick = {
                     showLogoutDialog = true

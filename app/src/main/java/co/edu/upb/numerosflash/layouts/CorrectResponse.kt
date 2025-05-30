@@ -52,7 +52,7 @@ fun CorrectResponse(respuestaUsuario: Int, esAcierto: Boolean, lista_numeros: Li
         }
         Spacer(Modifier.height(10.dp))
         Text(
-            "  Tu respuesta fue: $respuestaUsuario",
+            "   Tu respuesta fue: $respuestaUsuario",
             style = MaterialTheme.typography.bodyLarge,
             fontFamily = KanitFontFamily)
         Spacer(Modifier.height(20.dp))
