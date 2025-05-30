@@ -1,5 +1,11 @@
 package co.edu.upb.numerosflash.views
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -40,7 +46,6 @@ import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
 import co.edu.upb.numerosflash.ui.theme.Vhite
 import co.edu.upb.numerosflash.viewmodels.GameViewModel
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 @Composable
 fun Game(navController: NavController, gameViewModel: GameViewModel){
@@ -77,14 +82,14 @@ fun Game(navController: NavController, gameViewModel: GameViewModel){
         }
         juegoIniciado = true
 
-        //Genera los numeros aleatoriamente. Aqui suce el juego
+        //Genera los numeros aleatoriamente. Aqui sucede el juego
         lista_numeros = List(cantidadOperaciones){ rango.random()}
-        for(i in 0 until cantidadOperaciones){
+        for(i in lista_numeros.indices){
+            indice = i
             mostrarNumero = true
             delay(tiempo)
             mostrarNumero = false
-            delay(300L)
-            indice++
+            delay(400L)
         }
         mostrarInput = true
     }
@@ -123,19 +128,7 @@ fun Game(navController: NavController, gameViewModel: GameViewModel){
             indice < cantidadOperaciones && mostrarNumero -> {
                 val numeroActual = lista_numeros.getOrNull(indice)
                 if(numeroActual != null){
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(400.dp),
-                        contentAlignment = Alignment.Center
-                    ){
-                        Text(
-                            text = numeroActual.toString(),
-                            fontSize = 140.sp,
-                            fontFamily = KanitFontFamily,
-                            color = Amarrillo,
-                        )
-                    }
+                    AnimatedNumber(numero = numeroActual, visible = mostrarNumero)
                 }
             }
             mostrarInput ->{
@@ -185,4 +178,28 @@ fun Game(navController: NavController, gameViewModel: GameViewModel){
             }
         }
     }
+}
+
+@Composable
+fun AnimatedNumber(numero: Int, visible: Boolean){
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(400.dp),
+        contentAlignment = Alignment.Center
+    ){
+        AnimatedVisibility(
+            visible = visible,
+            enter = fadeIn(tween(500)) + scaleIn(tween(500), initialScale = 0.7f),
+            exit = fadeOut(tween(500)) + scaleOut(tween(500), targetScale = 1.3f)
+        ){
+            Text(
+                text = numero.toString(),
+                fontSize = 140.sp,
+                fontFamily = KanitFontFamily,
+                color = Amarrillo
+            )
+        }
+    }
+
 }

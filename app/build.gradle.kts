@@ -87,5 +87,6 @@ dependencies {
     //Para fuentes
     implementation("androidx.compose.ui:ui-text-google-fonts")
 
+    implementation("androidx.compose.animation:animation:1.6.0")
 }
 apply(plugin = "com.google.gms.google-services")
