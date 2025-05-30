@@ -1,6 +1,8 @@
 package co.edu.upb.numerosflash.views
 
+import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -31,6 +33,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
+import androidx.compose.ui.graphics.CompositingStrategy
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -183,24 +187,33 @@ fun Game(navController: NavController, gameViewModel: GameViewModel, userViewMod
 
 @Composable
 fun AnimatedNumber(numero: Int, visible: Boolean){
+    val animatedProgress by animateFloatAsState(
+        targetValue = if (visible) 1f else 0f,
+        animationSpec = tween(500)
+    )
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .height(400.dp),
         contentAlignment = Alignment.Center
     ){
-        AnimatedVisibility(
-            visible = visible,
-            enter = fadeIn(tween(500)) + scaleIn(tween(500), initialScale = 0.7f),
-            exit = fadeOut(tween(500)) + scaleOut(tween(500), targetScale = 1.3f)
-        ){
-            Text(
-                text = numero.toString(),
-                fontSize = 140.sp,
-                fontFamily = KanitFontFamily,
-                color = Amarrillo
-            )
-        }
-    }
 
+            AnimatedVisibility(
+                visible = visible,
+                enter = fadeIn(tween(500)) + scaleIn(tween(500), initialScale = 0.4f),
+                exit = fadeOut(tween(500)) + scaleOut(tween(500), targetScale = 1.5f)
+            ){
+                Text(
+                    text = numero.toString(),
+                    fontSize = 140.sp,
+                    fontFamily = KanitFontFamily,
+                    color = Amarrillo,
+                    modifier = Modifier
+                        .graphicsLayer {
+                            compositingStrategy = CompositingStrategy.Offscreen
+                        }
+                )
+            }
+    }
 }
