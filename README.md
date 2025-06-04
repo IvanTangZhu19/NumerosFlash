@@ -31,11 +31,34 @@ Suma (o resta) correctamente todos los números que van apareciendo en pantalla 
 
 ## 🧪 Tecnologías utilizadas
 
-| Tecnología        | Descripción                             |
-|-------------------|-----------------------------------------|
-| 🟣 Kotlin          | Lenguaje principal de desarrollo         |
-| 🧩 Jetpack Compose | UI moderna y declarativa de Android     |
-| 🔥 Firebase        | Autenticación, base de datos en tiempo real y estadísticas |
+<table>
+  <tr>
+    <th>Logo</th>
+    <th>Tecnología</th>
+    <th>Descripción</th>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" width="40"/>
+    </td>
+    <td><strong>Kotlin</strong></td>
+    <td>Lenguaje principal de desarrollo</td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjC97Z8BResg5dlPqczsRCFhP6zewWX0X0e7fVPG-G7PuUZwwZVsi9OPoqJYkgqT2h0FI95SsmWzVEgpt8b8HAqFiIxZ98TFtY4lE0b8UrtVJ2HrJebRwl6C9DslsQDl9KnBIrdHS6LtkY/s1600/jetpack+compose+icon_RGB.png" width="40" alt="Jetpack Compose"/>
+    </td>
+    <td><strong>Jetpack Compose</strong></td>
+    <td>UI moderna y declarativa de Android</td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" width="40" alt="Firebase"/>
+    </td>
+    <td><strong>Firebase</strong></td>
+    <td>Autenticación, base de datos en tiempo real y estadísticas</td>
+  </tr>
+</table>
 
 ---
 
@@ -47,18 +70,19 @@ Suma (o resta) correctamente todos los números que van apareciendo en pantalla 
   <img src="Capturas app (2).jpeg" width="180" alt="Dificultad"/>
   <img src="Capturas app (5).jpeg" width="180" alt="Juego"/>
   <img src="Capturas app (1).jpeg" width="180" alt="Juego res"/>
+  <img src="Capturas app (3).jpeg" width="180" alt="Juego"/>
 </p>
 
 ## Diseño
 
-[Diseño figma:](https://www.figma.com/design/QLWcmwfSmM4ncZ6VChTqNn/NumerosFlash?node-id=0-1&t=dF7cjJljrQM58co2-1)
+[Diseño figma](https://www.figma.com/design/QLWcmwfSmM4ncZ6VChTqNn/NumerosFlash?node-id=0-1&t=dF7cjJljrQM58co2-1)
 
 ---
 
 ## 📲 Descargar
 
-**¡Disponible pronto en Google Play!**  
-📦 [Ir a la Play Store](https://play.google.com/store/apps/details?id=co.edu.upb.numerosflash)
+**¡Disponible en Google Play!**  
+📦 [NúmerosFlash](https://play.google.com/store/apps/details?id=co.edu.upb.numerosflash)
 
 ---
 
@@ -72,7 +96,5 @@ Suma (o resta) correctamente todos los números que van apareciendo en pantalla 
 ---
 
 
-## 📬 Contacto
-
-Desarrollado por [Ivan Tang Zhu]  
+Desarrollado por Ivan Tang Zhu
 
