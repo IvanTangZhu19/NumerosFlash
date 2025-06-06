@@ -2,7 +2,10 @@
 <h1 align="center">NúmerosFlash</h1>
 <p align="center"> <em>Recuerda, calcula... y ¡gana en un flash!</em> </p>
 <p align="center">
-  <img src="app/src/main/ic_launcher-playstore.png" alt="Captura del juego" width="300"/>
+  <img src="app/src/main/ic_launcher-playstore.png" alt="Logo" width="300"/>
+  <a href="https://play.google.com/store/apps/details?id=co.edu.upb.numerosflash">
+    <img src="Captura Grafico funciones.png" alt="Gráfico de funciones" width="1000"/>
+  </a>
 </p>
 
 ---
@@ -19,7 +22,7 @@ Suma (o resta) correctamente todos los números que van apareciendo en pantalla 
 ## ⚙️ Características principales
 
 - 👤 **Modo solitario**: práctica y mejora tu cálculo mental.
-- ⏱️ **Diferentes dificultades**:
+- ⏱️ **Diferentes dificultades con niveles**: Mientras vaya aumentando el nivel mayor rango y cantidad de operaciones
   - Principiante: Tiempo 8 s
   - Desafío Rápido: Tiempo 5 s
   - Relámpago: Tiempo 3 s
