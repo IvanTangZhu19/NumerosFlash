@@ -64,7 +64,7 @@ fun Levels(navController: NavController, gameViewModel: GameViewModel){
                         LevelItem(
                             index.titulo,
                             index.descripcion + "\n" +
-                                    "Tiempo: ${index.levels[0].tiempo} segundos\n" +
+                                    "\nTiempo: ${index.levels[0].tiempo} segundos\n" +
                                     "\nNivel ${index.levels[0].id}" +
                                     "\n  - Rango: ${index.levels[0].rangoMin} - ${index.levels[0].rangoMax}" +
                                     "\n  - Operaciones: ${index.levels[0].numOperaciones}" +
@@ -121,10 +121,10 @@ val dificultades = listOf<Difficulty>(
         "\uD83C\uDF29\uFE0F Relámpago",
         "Los números aparecen más rápido. Debes estar muy concentrado.",
         listOf<Level>(
-            Level(1, 1, 50, 5, 5, R.raw.the_flute_song),
-            Level(2, 1, 100, 5, 5, R.raw.the_flute_song),
-            Level(3, -50, 50, 5, 10, R.raw.the_flute_song),
-            Level(4, -150, 150, 5, 15, R.raw.the_flute_song)
+            Level(1, 1, 50, 3, 5, R.raw.the_flute_song),
+            Level(2, 1, 100, 3, 5, R.raw.the_flute_song),
+            Level(3, -50, 50, 3, 10, R.raw.the_flute_song),
+            Level(4, -150, 150, 3, 15, R.raw.the_flute_song)
         )
     ),
     Difficulty(
