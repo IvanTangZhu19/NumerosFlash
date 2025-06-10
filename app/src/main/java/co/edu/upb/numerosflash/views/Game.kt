@@ -1,13 +1,15 @@
 package co.edu.upb.numerosflash.views
 
 import android.util.Log
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
+import androidx.compose.animation.with
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -25,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -185,35 +188,35 @@ fun Game(navController: NavController, gameViewModel: GameViewModel, userViewMod
     }
 }
 
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun AnimatedNumber(numero: Int, visible: Boolean){
-    val animatedProgress by animateFloatAsState(
-        targetValue = if (visible) 1f else 0f,
-        animationSpec = tween(500)
-    )
-
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .height(400.dp),
         contentAlignment = Alignment.Center
     ){
-
-            AnimatedVisibility(
-                visible = visible,
-                enter = fadeIn(tween(500)) + scaleIn(tween(500), initialScale = 0.4f),
-                exit = fadeOut(tween(500)) + scaleOut(tween(500), targetScale = 1.5f)
-            ){
+        AnimatedContent(
+            targetState = if (visible) numero else null,
+            transitionSpec = {
+                fadeIn(tween(800)) + scaleIn(tween(800), initialScale = 0.8f) with
+                        fadeOut(tween(800)) + scaleOut(tween(800), targetScale = 1.5f)
+            },
+            label = "NumeroAnimado"
+        ) { numero ->
+            numero?.let {
                 Text(
-                    text = numero.toString(),
+                    text = it.toString(),
                     fontSize = 140.sp,
                     fontFamily = KanitFontFamily,
                     color = Amarrillo,
-                    modifier = Modifier
-                        .graphicsLayer {
-                            compositingStrategy = CompositingStrategy.Offscreen
-                        }
+                    modifier = Modifier.graphicsLayer {
+                        compositingStrategy = CompositingStrategy.Offscreen
+                    }
                 )
             }
+        }
+
     }
 }
