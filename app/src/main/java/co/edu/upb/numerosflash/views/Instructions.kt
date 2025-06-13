@@ -103,9 +103,7 @@ fun Instructions(navController: NavController){
                 Text(
                             "\n" +
                             "\uD83E\uDDE9 Modos de juego\n" +
-                            "Solitario: Entrena tu mente y trata de superar tu propia puntuación.\n" +
-                            "\n" +
-                            "Multijugador: Compite en tiempo real con otros jugadores. ¡Gana el más rápido y preciso!",
+                            "Solitario: Entrena tu mente y trata de superarte a ti mismo con diferentes niveles que cada vez van a ser más difíciles\n",
                     style = MaterialTheme.typography.bodyLarge,
                     textAlign = TextAlign.Justify,
                     fontFamily = KanitFontFamily

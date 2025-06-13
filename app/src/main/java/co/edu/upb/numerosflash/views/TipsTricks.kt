@@ -84,9 +84,6 @@ fun TipsTricks(navController: NavController){
                         "\uD83D\uDCD3 4. Practica primero en niveles fáciles\n" +
                         "Empieza en una dificultad baja para acostumbrarte al ritmo del juego. Luego aumenta el rango de números o la velocidad a medida que te sientas más cómodo.\n" +
                         "\n" +
-                        "\uD83D\uDC65 5. Observa a tus oponentes en el multijugador\n" +
-                        "En partidas multijugador, no solo cuenta la velocidad, también la precisión. A veces, ser un poco más lento pero certero te da más puntos que responder rápido y mal.\n" +
-                        "\n" +
                         "\uD83D\uDCC8 6. Revisa tus estadísticas\n" +
                         "Mira tus partidas anteriores. ¿En qué tipo de operaciones fallas más? ¿Sumas? ¿Restas? Usa esa información para mejorar.",
                 style = MaterialTheme.typography.bodyLarge,
