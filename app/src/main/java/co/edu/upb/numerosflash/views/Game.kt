@@ -90,7 +90,6 @@ fun Game(navController: NavController, gameViewModel: GameViewModel, userViewMod
         }
         juegoIniciado = true
 
-        //Genera los numeros aleatoriamente. Aqui sucede el juego
         lista_numeros = List(cantidadOperaciones){ rango.random()}
         for(i in lista_numeros.indices){
             indice = i
@@ -125,6 +124,13 @@ fun Game(navController: NavController, gameViewModel: GameViewModel, userViewMod
         Spacer(modifier = Modifier.height(20.dp))
         val context = LocalContext.current
         MusicManager.play(context, nivel.cancion)
+
+        if (indice < cantidadOperaciones && mostrarNumero){
+            val numeroActual = lista_numeros.getOrNull(indice)
+            if(numeroActual != null){
+                AnimatedNumber(numero = numeroActual, visible = mostrarNumero)
+            }
+        }
         when{
             !juegoIniciado -> {
                 Text(
@@ -133,12 +139,12 @@ fun Game(navController: NavController, gameViewModel: GameViewModel, userViewMod
                     fontFamily = KanitFontFamily
                 )
             }
-            indice < cantidadOperaciones && mostrarNumero -> {
+            /*indice < cantidadOperaciones && mostrarNumero -> {
                 val numeroActual = lista_numeros.getOrNull(indice)
                 if(numeroActual != null){
                     AnimatedNumber(numero = numeroActual, visible = mostrarNumero)
                 }
-            }
+            }*/
             mostrarInput ->{
                 Text("Escribe la respuesta: ",
                     style = MaterialTheme.typography.bodyLarge,
@@ -190,33 +196,38 @@ fun Game(navController: NavController, gameViewModel: GameViewModel, userViewMod
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun AnimatedNumber(numero: Int, visible: Boolean){
+fun AnimatedNumber(numero: Int?, visible: Boolean) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .height(400.dp),
         contentAlignment = Alignment.Center
-    ){
-        AnimatedContent(
-            targetState = if (visible) numero else null,
-            transitionSpec = {
-                fadeIn(tween(800)) + scaleIn(tween(800), initialScale = 0.8f) with
-                        fadeOut(tween(800)) + scaleOut(tween(800), targetScale = 1.5f)
-            },
-            label = "NumeroAnimado"
-        ) { numero ->
-            numero?.let {
-                Text(
-                    text = it.toString(),
-                    fontSize = 140.sp,
-                    fontFamily = KanitFontFamily,
-                    color = Amarrillo,
-                    modifier = Modifier.graphicsLayer {
-                        compositingStrategy = CompositingStrategy.Offscreen
-                    }
-                )
+    ) {
+        AnimatedVisibility(
+            visible = visible && numero != null,
+            enter = fadeIn(tween(300)) + scaleIn(tween(300)),
+            exit = fadeOut(tween(300)) + scaleOut(tween(300))
+        ) {
+            AnimatedContent(
+                targetState = numero,
+                transitionSpec = {
+                    fadeIn(tween(300)) + scaleIn(tween(300)) with
+                            fadeOut(tween(300)) + scaleOut(tween(300))
+                },
+                label = "numeroAnimado"
+            ) { targetNumber ->
+                if (targetNumber != null) {
+                    Text(
+                        text = targetNumber.toString(),
+                        fontSize = 140.sp,
+                        fontFamily = KanitFontFamily,
+                        color = Amarrillo,
+                        modifier = Modifier.graphicsLayer {
+                            compositingStrategy = CompositingStrategy.Offscreen
+                        }
+                    )
+                }
             }
         }
-
     }
 }
