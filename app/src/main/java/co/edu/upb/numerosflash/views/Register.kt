@@ -86,7 +86,8 @@ fun Register(navController: NavController){
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("Correo") },
+            label = { Text("Correo",
+                fontFamily = KanitFontFamily) },
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
             leadingIcon = {Icon(Icons.Default.Email, contentDescription = "correo")},
@@ -95,7 +96,8 @@ fun Register(navController: NavController){
         OutlinedTextField(
             value = usuario,
             onValueChange = { usuario = it },
-            label = { Text("Usuario") },
+            label = { Text("Usuario",
+                fontFamily = KanitFontFamily) },
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
             leadingIcon = {Icon(Icons.Filled.Person, contentDescription = "usuario")},
@@ -104,7 +106,8 @@ fun Register(navController: NavController){
         OutlinedTextField(
             value = contraseña,
             onValueChange = { contraseña = it },
-            label = {Text("Contraseña")},
+            label = {Text("Contraseña",
+                fontFamily = KanitFontFamily)},
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
             leadingIcon = {Icon(Icons.Default.Lock, contentDescription = "contraseña")},
