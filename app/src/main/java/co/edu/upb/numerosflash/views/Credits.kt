@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -31,6 +32,7 @@ import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -43,6 +45,13 @@ import co.edu.upb.numerosflash.layouts.Header
 import co.edu.upb.numerosflash.layouts.sideMenu
 import co.edu.upb.numerosflash.ui.theme.Amarrillo
 import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import kotlinx.coroutines.delay
 
 @Composable
 fun Credits(navController: NavController){
@@ -104,7 +113,47 @@ fun Credits(navController: NavController){
                         .scale(pulseScale),
                 )
             }
+            TestAnimacionNumeros()
+        }
+    }
+}
 
+@Composable
+fun TestAnimacionNumeros() {
+    val numeros = listOf(5, 12, 20)
+    var indice by remember { mutableStateOf(0) }
+    var mostrarNumero by remember { mutableStateOf(false) }
+
+    LaunchedEffect(Unit) {
+        for (i in numeros.indices) {
+            indice = i
+            mostrarNumero = true
+            delay(1000)
+            mostrarNumero = false
+            delay(500)
+        }
+    }
+
+    val numeroActual = numeros.getOrNull(indice)
+
+    Box(
+        modifier = Modifier
+            .fillMaxWidth(),
+        contentAlignment = Alignment.Center
+    ) {
+        AnimatedVisibility(
+            visible = mostrarNumero,
+            enter = fadeIn(tween(500)) + scaleIn(tween(500)),
+            exit = fadeOut(tween(500)) + scaleOut(tween(500))
+        ) {
+            numeroActual?.let {
+                Text(
+                    text = it.toString(),
+                    fontSize = 80.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Yellow
+                )
+            }
         }
     }
 }
