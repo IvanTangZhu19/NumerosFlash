@@ -64,6 +64,7 @@ fun Game(navController: NavController, gameViewModel: GameViewModel, userViewMod
         Text("No se seleccionó un nivel")
         return
     }
+    var faseJuego by remember {mutableStateOf("inicio")}
 
     val cantidadOperaciones = nivel.numOperaciones
     val tiempo = nivel.tiempo*1000L
@@ -83,11 +84,15 @@ fun Game(navController: NavController, gameViewModel: GameViewModel, userViewMod
 
     LaunchedEffect(Unit){
         //Cuenta regresiva para empezar
+        faseJuego = "inicio"
         val mensajes = listOf("¿Estás listo?", "Empieza en...", "3", "2", "1", "¡YA!")
         for (i in mensajes) {
             mensajeInicio = i
             delay(1000L)
         }
+
+        //Juego
+        faseJuego = "numeros"
         juegoIniciado = true
 
         lista_numeros = List(cantidadOperaciones){ rango.random()}
@@ -99,6 +104,7 @@ fun Game(navController: NavController, gameViewModel: GameViewModel, userViewMod
             delay(400L)
         }
         mostrarInput = true
+        faseJuego = "input"
     }
 
     LaunchedEffect(mostrarInput){
@@ -112,6 +118,7 @@ fun Game(navController: NavController, gameViewModel: GameViewModel, userViewMod
                 respuesta = "0"
                 esAcierto = false
                 mostrarInput = false
+                faseJuego = "resultado"
             }
         }
     }
@@ -125,27 +132,21 @@ fun Game(navController: NavController, gameViewModel: GameViewModel, userViewMod
         val context = LocalContext.current
         MusicManager.play(context, nivel.cancion)
 
-        if (indice < cantidadOperaciones && mostrarNumero){
-            val numeroActual = lista_numeros.getOrNull(indice)
-            if(numeroActual != null){
-                AnimatedNumber(numero = numeroActual, visible = mostrarNumero)
-            }
-        }
-        when{
-            !juegoIniciado -> {
+        when(faseJuego) {
+            "inicio" -> {
                 Text(
                     mensajeInicio,
                     fontSize = 45.sp,
                     fontFamily = KanitFontFamily
                 )
             }
-            /*indice < cantidadOperaciones && mostrarNumero -> {
+            "numeros" -> {
                 val numeroActual = lista_numeros.getOrNull(indice)
                 if(numeroActual != null){
                     AnimatedNumber(numero = numeroActual, visible = mostrarNumero)
                 }
-            }*/
-            mostrarInput ->{
+            }
+            "input" ->{
                 Text("Escribe la respuesta: ",
                     style = MaterialTheme.typography.bodyLarge,
                     fontFamily = KanitFontFamily)
@@ -170,6 +171,7 @@ fun Game(navController: NavController, gameViewModel: GameViewModel, userViewMod
                         esAcierto = respuestaInt == respuestaCorrecta
                         validado = true
                         mostrarInput = false
+                        faseJuego = "resultado"
                     },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = DarkBlue,
@@ -182,12 +184,14 @@ fun Game(navController: NavController, gameViewModel: GameViewModel, userViewMod
                         fontFamily = KanitFontFamily)
                 }
             }
-            validado && respuesta.isNotEmpty() ->{
-                MusicManager.stop()
-                CorrectResponse(respuesta.toInt(), esAcierto, lista_numeros, navController, userViewModel)
-                LaunchedEffect(validado) {
-                    delay(5000L)
-                    MusicManager.play(context, R.raw.cherry_cute)
+            "resultado" ->{
+                if(validado && respuesta.isNotEmpty()){
+                    MusicManager.stop()
+                    CorrectResponse(respuesta.toInt(), esAcierto, lista_numeros, navController, userViewModel)
+                    LaunchedEffect(validado) {
+                        delay(5000L)
+                        MusicManager.play(context, R.raw.cherry_cute)
+                    }
                 }
             }
         }
