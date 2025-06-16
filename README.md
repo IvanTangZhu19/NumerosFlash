@@ -4,7 +4,7 @@
 <p align="center">
   <img src="app/src/main/ic_launcher-playstore.png" alt="Logo" width="300"/>
   <a href="https://play.google.com/store/apps/details?id=co.edu.upb.numerosflash">
-    <img src="Captura Grafico funciones.png" alt="Gráfico de funciones" width="1000"/>
+    <img src="Capturas/Captura Grafico funciones.png" alt="Gráfico de funciones" width="1000"/>
   </a>
 </p>
 
@@ -67,12 +67,12 @@ Suma (o resta) correctamente todos los números que van apareciendo en pantalla 
 ## 🖼️ Capturas de pantalla
 
 <p align="center">
-  <img src="Capturas app (4).jpeg" width="180" alt="Pantalla de inicio"/>
-  <img src="Capturas app (6).jpeg" width="180" alt="Inicio de sesión"/>
-  <img src="Capturas app (2).jpeg" width="180" alt="Dificultad"/>
-  <img src="Capturas app (5).jpeg" width="180" alt="Juego"/>
-  <img src="Capturas app (1).jpeg" width="180" alt="Juego res"/>
-  <img src="Capturas app (3).jpeg" width="180" alt="Juego"/>
+  <img src="Capturas/Capturas app (4).jpeg" width="180" alt="Pantalla de inicio"/>
+  <img src="Capturas/Capturas app (6).jpeg" width="180" alt="Inicio de sesión"/>
+  <img src="Capturas/Capturas app (2).jpeg" width="180" alt="Dificultad"/>
+  <img src="Capturas/Capturas app (5).jpeg" width="180" alt="Juego"/>
+  <img src="Capturas/Capturas app (1).jpeg" width="180" alt="Juego res"/>
+  <img src="Capturas/Capturas app (3).jpeg" width="180" alt="Juego"/>
 </p>
 
 ## Diseño
