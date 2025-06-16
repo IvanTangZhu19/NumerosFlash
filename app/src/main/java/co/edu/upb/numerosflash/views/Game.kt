@@ -27,7 +27,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -185,7 +184,8 @@ fun Game(navController: NavController, gameViewModel: GameViewModel, userViewMod
                 }
             }
             "resultado" ->{
-                if(validado && respuesta.isNotEmpty()){
+                if(respuesta.isEmpty()) respuesta = "0"
+                if(validado){
                     MusicManager.stop()
                     CorrectResponse(respuesta.toInt(), esAcierto, lista_numeros, navController, userViewModel)
                     LaunchedEffect(validado) {
