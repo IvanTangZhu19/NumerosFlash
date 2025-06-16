@@ -77,6 +77,7 @@ fun CorrectResponse(
             )
         )
         AnimatedVisibility(
+            modifier = Modifier.align(Alignment.CenterHorizontally),
             visible = visible,
             enter = scaleIn(animationSpec = spring(dampingRatio = 0.5f)) + fadeIn(),
             exit = scaleOut() + fadeOut()
@@ -85,18 +86,11 @@ fun CorrectResponse(
                 "${lista_numeros.sum()}",
                 fontSize = 120.sp,
                 modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
                     .scale(pulseScale),
                 fontFamily = KanitFontFamily,
                 color = Amarrillo
             )
         }
-        /*Text(
-            "${lista_numeros.sum()}",
-            fontSize = 120.sp,
-            modifier = Modifier.align(Alignment.CenterHorizontally),
-            fontFamily = KanitFontFamily
-        )*/
         if(esAcierto){
             SoundManager.reproducirAplausos()
             userViewModel.actualizarEstadisticas(true)
