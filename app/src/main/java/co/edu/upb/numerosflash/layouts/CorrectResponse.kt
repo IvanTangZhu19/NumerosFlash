@@ -45,6 +45,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.text.style.TextAlign
 import co.edu.upb.numerosflash.ui.theme.Amarrillo
 
 @Composable
@@ -123,7 +124,7 @@ fun CorrectResponse(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .align(Alignment.CenterHorizontally)
+                .align(Alignment.CenterHorizontally),
         ){
             chunkedNumbers.forEach { row ->
                 Row(
@@ -135,7 +136,8 @@ fun CorrectResponse(
                             num.toString(),
                             style = MaterialTheme.typography.headlineSmall,
                             fontFamily = KanitFontFamily,
-                            modifier = Modifier.weight(1f)
+                            modifier = Modifier.weight(1f),
+                            textAlign = TextAlign.Center
                         )
                     }
                     repeat(3 - row.size){
