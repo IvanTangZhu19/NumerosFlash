@@ -134,7 +134,8 @@ fun CorrectResponse(
                         Text(
                             num.toString(),
                             style = MaterialTheme.typography.headlineSmall,
-                            fontFamily = KanitFontFamily
+                            fontFamily = KanitFontFamily,
+                            modifier = Modifier.weight(1f)
                         )
                     }
                     repeat(3 - row.size){
@@ -175,5 +176,6 @@ fun CorrectResponse(
                 style = MaterialTheme.typography.bodyLarge,
                 fontFamily = KanitFontFamily)
         }
+        Spacer(Modifier.height(30.dp))
     }
 }
