@@ -12,7 +12,9 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -25,6 +27,8 @@ import androidx.navigation.NavController
 import androidx.compose.material3.Text
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.runtime.LaunchedEffect
@@ -58,7 +62,10 @@ fun CorrectResponse(
     }
 
     Column(
-        modifier = Modifier.fillMaxWidth().padding(25.dp)
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(25.dp)
+            .verticalScroll(rememberScrollState())
     ) {
         Text(
             "La respuesta es: ",
@@ -112,18 +119,28 @@ fun CorrectResponse(
             style = MaterialTheme.typography.bodyLarge,
             fontFamily = KanitFontFamily)
         Spacer(Modifier.height(20.dp))
-        LazyVerticalGrid(
+        val chunkedNumbers = lista_numeros.chunked(3)
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .align(Alignment.CenterHorizontally),
-            columns = GridCells.Fixed(3),
-        ) {
-            items(lista_numeros) { num ->
-                Text(
-                    num.toString(),
-                    style = MaterialTheme.typography.headlineSmall,
-                    fontFamily = KanitFontFamily
-                )
+                .align(Alignment.CenterHorizontally)
+        ){
+            chunkedNumbers.forEach { row ->
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ){
+                    row.forEach { num ->
+                        Text(
+                            num.toString(),
+                            style = MaterialTheme.typography.headlineSmall,
+                            fontFamily = KanitFontFamily
+                        )
+                    }
+                    repeat(3 - row.size){
+                        Spacer(Modifier.weight(1f))
+                    }
+                }
             }
         }
         Spacer(Modifier.height(20.dp))
