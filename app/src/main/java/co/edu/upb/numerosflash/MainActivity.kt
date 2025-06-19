@@ -81,8 +81,8 @@ fun Navigation() {
     }
     NavHost(
         navController = navController,
-        startDestination = "login",
-        //startDestination = if (authState != null) "home" else "login",
+        //startDestination = "login",
+        startDestination = if (authState != null) "home" else "login",
         modifier = Modifier.fillMaxSize()
     ) {
         composable("login") {
