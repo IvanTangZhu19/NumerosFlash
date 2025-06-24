@@ -22,8 +22,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.Card
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -38,6 +42,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -58,8 +63,8 @@ fun Credits(navController: NavController){
         }
     ) {
         Column(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally
+            modifier = Modifier.fillMaxWidth().verticalScroll(rememberScrollState()),
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Header(navController, scope, drawerState)
             Spacer(modifier = Modifier.height(20.dp))
@@ -92,13 +97,20 @@ fun Credits(navController: NavController){
                     repeatMode = RepeatMode.Reverse
                 )
             )
+            Icon(
+                imageVector = Icons.Default.Person,
+                contentDescription = "Desarrollador",
+                modifier = Modifier.size(48.dp),
+                tint= Amarrillo
+            )
+            Spacer(modifier = Modifier.height(16.dp))
             AnimatedVisibility(
                 visible = true,
                 enter = scaleIn(animationSpec = spring(dampingRatio = 0.5f)) + fadeIn(),
                 exit = scaleOut() + fadeOut()
             ) {
                 Text(
-                    "Desarrollado por Iván Tang Zhu",
+                    "Desarrollado por",
                     style = MaterialTheme.typography.headlineSmall,
                     fontFamily = KanitFontFamily,
                     color = Amarrillo,
@@ -106,6 +118,40 @@ fun Credits(navController: NavController){
                         .scale(pulseScale),
                 )
             }
+            Text(
+                "Iván Tang Zhu",
+                style = MaterialTheme.typography.headlineSmall,
+                fontFamily = KanitFontFamily,
+                color = Amarrillo,
+                modifier = Modifier
+                    .scale(pulseScale)
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(
+                "Diseño UI/UX • Programación • Testing",
+                style = MaterialTheme.typography.bodyLarge,
+                fontFamily = KanitFontFamily,
+                textAlign = TextAlign.Center
+            )
+            Spacer(Modifier.height(30.dp))
+            Text(
+                "¡Gracias por jugar!",
+                style = MaterialTheme.typography.headlineSmall,
+                fontFamily = KanitFontFamily,
+                color = Amarrillo
+            )
+            Spacer(Modifier.height(20.dp))
+            Text(
+                "Versión 2.0",
+                style = MaterialTheme.typography.bodyLarge,
+                fontFamily = KanitFontFamily,
+            )
+            Spacer(Modifier.height(20.dp))
+            Text(
+                "Desarrollado en 2025 para el curso: Aplicaciones móviles",
+                style = MaterialTheme.typography.bodyLarge,
+                fontFamily = KanitFontFamily,
+            )
         }
     }
 }
