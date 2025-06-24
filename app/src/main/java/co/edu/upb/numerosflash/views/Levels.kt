@@ -101,30 +101,30 @@ val dificultades = listOf<Difficulty>(
         "\uD83D\uDC22 Calentamiento",
         "Ideal para empezar. Números pequeños, tiempo amplio y pocas operaciones.",
         listOf<Level>(
-            Level(1, 1, 20, 8, 5, R.raw.cherry_cute),
-            Level(2, 1, 50, 8, 5, R.raw.cherry_cute),
-            Level(3, -50, 50, 8, 10, R.raw.cherry_cute),
-            Level(4, -100, 100, 8, 10, R.raw.cherry_cute)
+            Level(1, 1, 20, 8, 5, R.raw.raindrops_lofi_sleep),
+            Level(2, 1, 50, 8, 5, R.raw.raindrops_lofi_sleep),
+            Level(3, -50, 50, 8, 10, R.raw.raindrops_lofi_sleep),
+            Level(4, -100, 100, 8, 10, R.raw.raindrops_lofi_sleep)
         )
     ),
     Difficulty(
         "\uD83C\uDFC3\u200D♂\uFE0F Desafío Rápido",
         "Un nivel intermedio con números más grandes y menos tiempo para responder.",
         listOf<Level>(
-            Level(1, 1, 20, 5, 5, R.raw.cherry_cute),
-            Level(2, 1, 50, 5, 10, R.raw.cherry_cute),
-            Level(3, -50, 50, 5, 15, R.raw.cherry_cute),
-            Level(4, -100, 100, 5, 15, R.raw.cherry_cute)
+            Level(1, 1, 20, 5, 5, R.raw.distance_piano),
+            Level(2, 1, 50, 5, 10, R.raw.distance_piano),
+            Level(3, -50, 50, 5, 15, R.raw.distance_piano),
+            Level(4, -100, 100, 5, 15, R.raw.distance_piano)
         )
     ),
     Difficulty(
         "\uD83C\uDF29\uFE0F Relámpago",
         "Los números aparecen más rápido. Debes estar muy concentrado.",
         listOf<Level>(
-            Level(1, 1, 50, 3, 5, R.raw.the_flute_song),
-            Level(2, 1, 100, 3, 5, R.raw.the_flute_song),
-            Level(3, -50, 50, 3, 10, R.raw.the_flute_song),
-            Level(4, -150, 150, 3, 15, R.raw.the_flute_song)
+            Level(1, 1, 50, 3, 5, R.raw.short_10_speed),
+            Level(2, 1, 100, 3, 5, R.raw.short_10_speed),
+            Level(3, -50, 50, 3, 10, R.raw.short_10_speed),
+            Level(4, -150, 150, 3, 15, R.raw.short_10_speed)
         )
     ),
     Difficulty(
