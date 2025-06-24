@@ -1,7 +1,6 @@
 package co.edu.upb.numerosflash.views
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -155,7 +154,6 @@ fun Register(navController: NavController){
                         showErrorDialog = true
                     }
                 )
-                //navController.navigate("login")
             },
             modifier = Modifier.width(170.dp),
             shape = RoundedCornerShape(20.dp)
@@ -175,7 +173,8 @@ fun Register(navController: NavController){
                 fontFamily = KanitFontFamily) },
             confirmButton = {
                 TextButton(onClick = { showErrorDialog = false }) {
-                    Text("Aceptar")
+                    Text("Aceptar",
+                        fontFamily = KanitFontFamily)
                 }
             }
         )
