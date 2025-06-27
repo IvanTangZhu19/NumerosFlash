@@ -41,9 +41,6 @@ import co.edu.upb.numerosflash.ui.theme.KanitFontFamily
 import co.edu.upb.numerosflash.ui.theme.Vhite
 import co.edu.upb.numerosflash.viewmodels.UserViewModel
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.text.style.TextAlign
 import co.edu.upb.numerosflash.ui.theme.Amarrillo
@@ -56,11 +53,6 @@ fun CorrectResponse(
         navController: NavController,
         userViewModel: UserViewModel
     ){
-    var visible by remember { mutableStateOf(false) }
-
-    LaunchedEffect(Unit) {
-        visible = true
-    }
 
     Column(
         modifier = Modifier
@@ -86,7 +78,7 @@ fun CorrectResponse(
         )
         AnimatedVisibility(
             modifier = Modifier.align(Alignment.CenterHorizontally),
-            visible = visible,
+            visible = true,
             enter = scaleIn(animationSpec = spring(dampingRatio = 0.5f)) + fadeIn(),
             exit = scaleOut() + fadeOut()
         ) {

@@ -115,17 +115,22 @@ fun Game(navController: NavController, gameViewModel: GameViewModel, userViewMod
         faseJuego = "input"
     }
 
-    LaunchedEffect(mostrarInput){
-        if(mostrarInput){
+    LaunchedEffect(mostrarInput, validado){
+        if(mostrarInput && !validado){
             for (i in 10 downTo 1){
-                contador = i
-                delay(1000L)
+                if(!validado) {
+                    contador = i
+                    delay(1000L)
+                }
+                else {
+                    break
+                }
             }
             if(!validado){
+                mostrarInput = false
                 validado = true
                 respuesta = "0"
                 esAcierto = false
-                mostrarInput = false
                 faseJuego = "resultado"
             }
         }
@@ -177,8 +182,8 @@ fun Game(navController: NavController, gameViewModel: GameViewModel, userViewMod
                         val respuestaCorrecta = lista_numeros.sum()
                         val respuestaInt = respuesta.toIntOrNull()
                         esAcierto = respuestaInt == respuestaCorrecta
-                        validado = true
                         mostrarInput = false
+                        validado = true
                         faseJuego = "resultado"
                     },
                     colors = ButtonDefaults.buttonColors(
@@ -197,13 +202,18 @@ fun Game(navController: NavController, gameViewModel: GameViewModel, userViewMod
                 if(validado){
                     MusicManager.stop()
                     CorrectResponse(respuesta.toInt(), esAcierto, lista_numeros, navController, userViewModel)
-                    LaunchedEffect(validado) {
-                        delay(5000L)
-                        MusicManager.play(context, R.raw.cherry_cute)
+                    LaunchedEffect(faseJuego) {
+                        if(faseJuego == "resultado"){
+                            delay(5000L)
+                            MusicManager.play(context, R.raw.cherry_cute)
+                        }
                     }
                 }
             }
         }
+        /*if(validado && faseJuego == "resultado"){
+            CorrectResponse(respuesta.toInt(), esAcierto, lista_numeros, navController, userViewModel)
+        }*/
     }
 }
 
@@ -246,10 +256,10 @@ fun AnimatedNumber(numero: Int?, visible: Boolean) {
                         fontFamily = KanitFontFamily,
                         color = Amarrillo,
                         modifier = Modifier
-                                .scale(pulseScale)
-                                .graphicsLayer {
+                            .scale(pulseScale)
+                            .graphicsLayer {
                                 compositingStrategy = CompositingStrategy.Offscreen
-                        }
+                            }
                     )
                 }
             }
