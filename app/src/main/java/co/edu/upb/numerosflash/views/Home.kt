@@ -2,6 +2,7 @@ package co.edu.upb.numerosflash.views
 
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -41,7 +42,9 @@ fun Home(navController: NavController){
         Image(
             painter = painterResource(id = R.drawable.logo),
             contentDescription = "Logo",
-            modifier = Modifier.size(200.dp)
+            modifier = Modifier.size(200.dp).clickable(
+                onClick = {navController.navigate("credits")}
+            )
         )
         Spacer(modifier = Modifier.height(15.dp))
         Text(

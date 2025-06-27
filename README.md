@@ -4,7 +4,7 @@
 <p align="center">
   <img src="app/src/main/ic_launcher-playstore.png" alt="Logo" width="300"/>
   <a href="https://play.google.com/store/apps/details?id=co.edu.upb.numerosflash">
-    <img src="Captura Grafico funciones.png" alt="Gráfico de funciones" width="1000"/>
+    <img src="Capturas/Captura Grafico funciones.png" alt="Gráfico de funciones" width="1000"/>
   </a>
 </p>
 
@@ -36,29 +36,28 @@ Suma (o resta) correctamente todos los números que van apareciendo en pantalla 
 
 <table>
   <tr>
-    <th>Logo</th>
     <th>Tecnología</th>
     <th>Descripción</th>
   </tr>
   <tr>
     <td align="center">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" width="40"/>
+      <img align="center" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" width="40"/>
+      <strong align="center">Kotlin</strong>
     </td>
-    <td><strong>Kotlin</strong></td>
     <td>Lenguaje principal de desarrollo</td>
   </tr>
   <tr>
     <td align="center">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjC97Z8BResg5dlPqczsRCFhP6zewWX0X0e7fVPG-G7PuUZwwZVsi9OPoqJYkgqT2h0FI95SsmWzVEgpt8b8HAqFiIxZ98TFtY4lE0b8UrtVJ2HrJebRwl6C9DslsQDl9KnBIrdHS6LtkY/s1600/jetpack+compose+icon_RGB.png" width="40" alt="Jetpack Compose"/>
+      <img align="center" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjC97Z8BResg5dlPqczsRCFhP6zewWX0X0e7fVPG-G7PuUZwwZVsi9OPoqJYkgqT2h0FI95SsmWzVEgpt8b8HAqFiIxZ98TFtY4lE0b8UrtVJ2HrJebRwl6C9DslsQDl9KnBIrdHS6LtkY/s1600/jetpack+compose+icon_RGB.png" width="40" alt="Jetpack Compose"/>
+      <strong align="center">Jetpack Compose</strong>
     </td>
-    <td><strong>Jetpack Compose</strong></td>
     <td>UI moderna y declarativa de Android</td>
   </tr>
   <tr>
     <td align="center">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" width="40" alt="Firebase"/>
+      <img align="center" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" width="40" alt="Firebase"/>
+      <strong align="center">Firebase</strong>
     </td>
-    <td><strong>Firebase</strong></td>
     <td>Autenticación, base de datos en tiempo real y estadísticas</td>
   </tr>
 </table>
@@ -68,12 +67,12 @@ Suma (o resta) correctamente todos los números que van apareciendo en pantalla 
 ## 🖼️ Capturas de pantalla
 
 <p align="center">
-  <img src="Capturas app (4).jpeg" width="180" alt="Pantalla de inicio"/>
-  <img src="Capturas app (6).jpeg" width="180" alt="Inicio de sesión"/>
-  <img src="Capturas app (2).jpeg" width="180" alt="Dificultad"/>
-  <img src="Capturas app (5).jpeg" width="180" alt="Juego"/>
-  <img src="Capturas app (1).jpeg" width="180" alt="Juego res"/>
-  <img src="Capturas app (3).jpeg" width="180" alt="Juego"/>
+  <img src="Capturas/Capturas app (4).jpeg" width="180" alt="Pantalla de inicio"/>
+  <img src="Capturas/Capturas app (6).jpeg" width="180" alt="Inicio de sesión"/>
+  <img src="Capturas/Capturas app (2).jpeg" width="180" alt="Dificultad"/>
+  <img src="Capturas/Capturas app (5).jpeg" width="180" alt="Juego"/>
+  <img src="Capturas/Capturas app (1).jpeg" width="180" alt="Juego res"/>
+  <img src="Capturas/Capturas app (3).jpeg" width="180" alt="Juego"/>
 </p>
 
 ## Diseño

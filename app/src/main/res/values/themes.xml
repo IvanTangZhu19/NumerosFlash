@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <style name="SplashTheme" parent="android:Theme.NoTitleBar.Fullscreen">
+        <item name="android:windowBackground">@color/splash_background</item>
+    </style>
     <style name="Theme.NumerosFlash" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>

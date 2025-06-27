@@ -27,8 +27,8 @@ android {
         applicationId = "co.edu.upb.numerosflash"
         minSdk = 24
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "2.0"
         buildConfigField("String", "FIREBASE_API_KEY", "\"${firebaseApiKey}\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -87,6 +87,8 @@ dependencies {
     //Para fuentes
     implementation("androidx.compose.ui:ui-text-google-fonts")
 
+    //Para animaciones
     implementation("androidx.compose.animation:animation:1.6.0")
+    implementation ("androidx.compose.animation:animation-core:1.6.0")
 }
 apply(plugin = "com.google.gms.google-services")

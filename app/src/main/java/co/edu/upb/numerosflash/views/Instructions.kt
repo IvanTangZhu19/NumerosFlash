@@ -40,7 +40,7 @@ fun Instructions(navController: NavController){
         "Suma o resta mentalmente según cada número.",
         "Los números desaparecen rápidamente, ¡concéntrate!",
         "Al final, ingresa el resultado que crees correcto.",
-        "¡Compite contra ti mismo o contra otros jugadores!"
+        "Si fallaste revisa en donde te equivocaste e inténtalo de nuevo"
     )
 
     ModalNavigationDrawer(
@@ -85,7 +85,7 @@ fun Instructions(navController: NavController){
                     "¡Bienvenido a NúmerosFlash! Pon a prueba tu agilidad mental y tu capacidad de concentración en este desafío matemático.\n" +
                             "\n" +
                             "\uD83C\uDFAF Objetivo del juego\n" +
-                            "Suma o resta los números que irán apareciendo uno por uno en la pantalla. Al final de la secuencia, escribe el resultado final que crees correcto. ¡Gana quien acierte más!\n" +
+                            "Suma o resta los números, los cuales se generan aleatoriamente, e irán apareciendo uno por uno en la pantalla. Al final de la secuencia, escribe el resultado final que crees correcto. ¡Gana quien acierte más!\n" +
                             "\n" +
                             "\uD83D\uDCCB ¿Cómo se juega?\n",
                     style = MaterialTheme.typography.bodyLarge,
@@ -103,13 +103,13 @@ fun Instructions(navController: NavController){
                 Text(
                             "\n" +
                             "\uD83E\uDDE9 Modos de juego\n" +
-                            "Solitario: Entrena tu mente y trata de superar tu propia puntuación.\n" +
-                            "\n" +
-                            "Multijugador: Compite en tiempo real con otros jugadores. ¡Gana el más rápido y preciso!",
+                            "Solitario: Entrena tu mente y trata de superarte a ti mismo con diferentes niveles que cada vez van a ser más difíciles\n" +
+                                    "\nMultijugador: Disponible proximámente",
                     style = MaterialTheme.typography.bodyLarge,
                     textAlign = TextAlign.Justify,
                     fontFamily = KanitFontFamily
                 )
+                Spacer(Modifier.height(30.dp))
             }
         }
     }

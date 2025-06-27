@@ -1,7 +1,6 @@
 package co.edu.upb.numerosflash.views
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -18,7 +17,6 @@ import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -65,7 +63,8 @@ fun Login(navController: NavController){
             onDismissRequest = { showErrorDialog = false },
             title = { Text("Error",
                 fontFamily = KanitFontFamily) },
-            text = { Text(errorMessage ?: "Ha ocurrido un error") },
+            text = { Text(errorMessage ?: "Ha ocurrido un error",
+                fontFamily = KanitFontFamily) },
             confirmButton = {
                 TextButton(onClick = { showErrorDialog = false }) {
                     Text("Aceptar",

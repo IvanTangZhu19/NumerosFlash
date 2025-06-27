@@ -1,7 +1,6 @@
 package co.edu.upb.numerosflash.views
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -86,7 +85,8 @@ fun Register(navController: NavController){
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("Correo") },
+            label = { Text("Correo",
+                fontFamily = KanitFontFamily) },
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
             leadingIcon = {Icon(Icons.Default.Email, contentDescription = "correo")},
@@ -95,7 +95,8 @@ fun Register(navController: NavController){
         OutlinedTextField(
             value = usuario,
             onValueChange = { usuario = it },
-            label = { Text("Usuario") },
+            label = { Text("Usuario",
+                fontFamily = KanitFontFamily) },
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
             leadingIcon = {Icon(Icons.Filled.Person, contentDescription = "usuario")},
@@ -104,7 +105,8 @@ fun Register(navController: NavController){
         OutlinedTextField(
             value = contraseña,
             onValueChange = { contraseña = it },
-            label = {Text("Contraseña")},
+            label = {Text("Contraseña",
+                fontFamily = KanitFontFamily)},
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
             leadingIcon = {Icon(Icons.Default.Lock, contentDescription = "contraseña")},
@@ -152,7 +154,6 @@ fun Register(navController: NavController){
                         showErrorDialog = true
                     }
                 )
-                //navController.navigate("login")
             },
             modifier = Modifier.width(170.dp),
             shape = RoundedCornerShape(20.dp)
@@ -172,7 +173,8 @@ fun Register(navController: NavController){
                 fontFamily = KanitFontFamily) },
             confirmButton = {
                 TextButton(onClick = { showErrorDialog = false }) {
-                    Text("Aceptar")
+                    Text("Aceptar",
+                        fontFamily = KanitFontFamily)
                 }
             }
         )

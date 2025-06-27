@@ -1,17 +1,29 @@
 package co.edu.upb.numerosflash.views
 
+import android.util.Log
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
+import androidx.compose.animation.with
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DrawerValue
@@ -29,8 +41,11 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
+import androidx.compose.ui.graphics.CompositingStrategy
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -57,6 +72,7 @@ fun Game(navController: NavController, gameViewModel: GameViewModel, userViewMod
         Text("No se seleccionó un nivel")
         return
     }
+    var faseJuego by remember {mutableStateOf("inicio")}
 
     val cantidadOperaciones = nivel.numOperaciones
     val tiempo = nivel.tiempo*1000L
@@ -76,14 +92,17 @@ fun Game(navController: NavController, gameViewModel: GameViewModel, userViewMod
 
     LaunchedEffect(Unit){
         //Cuenta regresiva para empezar
+        faseJuego = "inicio"
         val mensajes = listOf("¿Estás listo?", "Empieza en...", "3", "2", "1", "¡YA!")
         for (i in mensajes) {
             mensajeInicio = i
             delay(1000L)
         }
+
+        //Juego
+        faseJuego = "numeros"
         juegoIniciado = true
 
-        //Genera los numeros aleatoriamente. Aqui sucede el juego
         lista_numeros = List(cantidadOperaciones){ rango.random()}
         for(i in lista_numeros.indices){
             indice = i
@@ -93,46 +112,54 @@ fun Game(navController: NavController, gameViewModel: GameViewModel, userViewMod
             delay(400L)
         }
         mostrarInput = true
+        faseJuego = "input"
     }
 
-    LaunchedEffect(mostrarInput){
-        if(mostrarInput){
+    LaunchedEffect(mostrarInput, validado){
+        if(mostrarInput && !validado){
             for (i in 10 downTo 1){
-                contador = i
-                delay(1000L)
+                if(!validado) {
+                    contador = i
+                    delay(1000L)
+                }
+                else {
+                    break
+                }
             }
             if(!validado){
+                mostrarInput = false
                 validado = true
                 respuesta = "0"
                 esAcierto = false
-                mostrarInput = false
+                faseJuego = "resultado"
             }
         }
     }
 
     Column(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Header(navController, scope, drawerState)
         Spacer(modifier = Modifier.height(20.dp))
         val context = LocalContext.current
         MusicManager.play(context, nivel.cancion)
-        when{
-            !juegoIniciado -> {
+
+        when(faseJuego) {
+            "inicio" -> {
                 Text(
                     mensajeInicio,
                     fontSize = 45.sp,
                     fontFamily = KanitFontFamily
                 )
             }
-            indice < cantidadOperaciones && mostrarNumero -> {
+            "numeros" -> {
                 val numeroActual = lista_numeros.getOrNull(indice)
                 if(numeroActual != null){
                     AnimatedNumber(numero = numeroActual, visible = mostrarNumero)
                 }
             }
-            mostrarInput ->{
+            "input" ->{
                 Text("Escribe la respuesta: ",
                     style = MaterialTheme.typography.bodyLarge,
                     fontFamily = KanitFontFamily)
@@ -155,8 +182,9 @@ fun Game(navController: NavController, gameViewModel: GameViewModel, userViewMod
                         val respuestaCorrecta = lista_numeros.sum()
                         val respuestaInt = respuesta.toIntOrNull()
                         esAcierto = respuestaInt == respuestaCorrecta
-                        validado = true
                         mostrarInput = false
+                        validado = true
+                        faseJuego = "resultado"
                     },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = DarkBlue,
@@ -169,38 +197,72 @@ fun Game(navController: NavController, gameViewModel: GameViewModel, userViewMod
                         fontFamily = KanitFontFamily)
                 }
             }
-            validado && respuesta.isNotEmpty() ->{
-                MusicManager.stop()
-                CorrectResponse(respuesta.toInt(), esAcierto, lista_numeros, navController, userViewModel)
-                LaunchedEffect(validado) {
-                    delay(5000L)
-                    MusicManager.play(context, R.raw.cherry_cute)
+            "resultado" ->{
+                if(respuesta.isEmpty()) respuesta = "0"
+                if(validado){
+                    MusicManager.stop()
+                    CorrectResponse(respuesta.toInt(), esAcierto, lista_numeros, navController, userViewModel)
+                    LaunchedEffect(faseJuego) {
+                        if(faseJuego == "resultado"){
+                            delay(5000L)
+                            MusicManager.play(context, R.raw.cherry_cute)
+                        }
+                    }
                 }
             }
         }
+        /*if(validado && faseJuego == "resultado"){
+            CorrectResponse(respuesta.toInt(), esAcierto, lista_numeros, navController, userViewModel)
+        }*/
     }
 }
 
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun AnimatedNumber(numero: Int, visible: Boolean){
+fun AnimatedNumber(numero: Int?, visible: Boolean) {
+    //Animación de pulsación
+    val infiniteTransition = rememberInfiniteTransition()
+    val pulseScale by infiniteTransition.animateFloat(
+        initialValue = 0.9f,
+        targetValue = 1.2f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(1000, easing = FastOutSlowInEasing),
+            repeatMode = RepeatMode.Reverse
+        )
+    )
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .height(400.dp),
         contentAlignment = Alignment.Center
-    ){
+    ) {
         AnimatedVisibility(
-            visible = visible,
-            enter = fadeIn(tween(500)) + scaleIn(tween(500), initialScale = 0.7f),
-            exit = fadeOut(tween(500)) + scaleOut(tween(500), targetScale = 1.3f)
-        ){
-            Text(
-                text = numero.toString(),
-                fontSize = 140.sp,
-                fontFamily = KanitFontFamily,
-                color = Amarrillo
-            )
+            visible = visible && numero != null,
+            enter = fadeIn(tween(300)) + scaleIn(tween(300)),
+            exit = fadeOut(tween(300)) + scaleOut(tween(300))
+        ) {
+            AnimatedContent(
+                targetState = numero,
+                transitionSpec = {
+                    fadeIn(tween(300)) + scaleIn(tween(300)) with
+                            fadeOut(tween(300)) + scaleOut(tween(300))
+                },
+                label = "numeroAnimado"
+            ) { targetNumber ->
+                if (targetNumber != null) {
+                    Text(
+                        text = targetNumber.toString(),
+                        fontSize = 140.sp,
+                        fontFamily = KanitFontFamily,
+                        color = Amarrillo,
+                        modifier = Modifier
+                            .scale(pulseScale)
+                            .graphicsLayer {
+                                compositingStrategy = CompositingStrategy.Offscreen
+                            }
+                    )
+                }
+            }
         }
     }
-
 }
