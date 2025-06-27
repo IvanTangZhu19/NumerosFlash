@@ -104,20 +104,14 @@ fun Credits(navController: NavController){
                 tint= Amarrillo
             )
             Spacer(modifier = Modifier.height(16.dp))
-            AnimatedVisibility(
-                visible = true,
-                enter = scaleIn(animationSpec = spring(dampingRatio = 0.5f)) + fadeIn(),
-                exit = scaleOut() + fadeOut()
-            ) {
-                Text(
-                    "Desarrollado por",
-                    style = MaterialTheme.typography.headlineSmall,
-                    fontFamily = KanitFontFamily,
-                    color = Amarrillo,
-                    modifier = Modifier
-                        .scale(pulseScale),
-                )
-            }
+            Text(
+                "Desarrollado por",
+                style = MaterialTheme.typography.headlineSmall,
+                fontFamily = KanitFontFamily,
+                color = Amarrillo,
+                modifier = Modifier
+                    .scale(pulseScale)
+            )
             Text(
                 "Iván Tang Zhu",
                 style = MaterialTheme.typography.headlineSmall,
@@ -138,7 +132,9 @@ fun Credits(navController: NavController){
                 "¡Gracias por jugar!",
                 style = MaterialTheme.typography.headlineSmall,
                 fontFamily = KanitFontFamily,
-                color = Amarrillo
+                color = Amarrillo,
+                modifier = Modifier
+                    .scale(pulseScale)
             )
             Spacer(Modifier.height(20.dp))
             Text(
@@ -148,7 +144,18 @@ fun Credits(navController: NavController){
             )
             Spacer(Modifier.height(20.dp))
             Text(
-                "Desarrollado en 2025 para el curso: Aplicaciones móviles",
+                "Desarrollado en 2025 para el curso:",
+                style = MaterialTheme.typography.bodyLarge,
+                fontFamily = KanitFontFamily,
+            )
+            Text(
+                "Aplicaciones móviles",
+                style = MaterialTheme.typography.bodyLarge,
+                fontFamily = KanitFontFamily,
+            )
+            Spacer(Modifier.height(20.dp))
+            Text(
+                "UPB",
                 style = MaterialTheme.typography.bodyLarge,
                 fontFamily = KanitFontFamily,
             )
