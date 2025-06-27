@@ -109,6 +109,7 @@ fun Instructions(navController: NavController){
                     textAlign = TextAlign.Justify,
                     fontFamily = KanitFontFamily
                 )
+                Spacer(Modifier.height(30.dp))
             }
         }
     }

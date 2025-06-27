@@ -20,7 +20,11 @@ fun sideMenu(navController: NavController){
     ModalDrawerSheet(
         modifier = Modifier.width(200.dp)
     ) {
-        Text("Menu", modifier = Modifier.padding(12.dp))
+        Text(
+            "Menu",
+            modifier = Modifier.padding(12.dp),
+            fontFamily = KanitFontFamily
+        )
         NavigationDrawerItem(
             label = {Text("Inicio",
                 fontFamily = KanitFontFamily)},

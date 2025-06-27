@@ -90,6 +90,7 @@ fun TipsTricks(navController: NavController){
                 modifier = Modifier.padding(25.dp),
                 fontFamily = KanitFontFamily
             )
+            Spacer(Modifier.height(30.dp))
         }
     }
 }
