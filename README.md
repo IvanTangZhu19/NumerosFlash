@@ -63,7 +63,7 @@ Suma (o resta) correctamente todos los números que van apareciendo en pantalla 
   <tr>
     <td align="center">
       <img align="center" src="https://cdn.worldvectorlogo.com/logos/pixabay.svg" width="40" alt="Pixabay"/>
-      <strong align="center">Firebase</strong>
+      <strong align="center">Pixabay</strong>
     </td>
     <td>Música y efectos de sonido</td>
   </tr>
