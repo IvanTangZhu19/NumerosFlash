@@ -32,7 +32,7 @@ Suma (o resta) correctamente todos los números que van apareciendo en pantalla 
 
 ---
 
-## 🧪 Tecnologías utilizadas
+## 🧪 Tecnologías y herramientas utilizadas
 
 <table>
   <tr>
@@ -59,6 +59,13 @@ Suma (o resta) correctamente todos los números que van apareciendo en pantalla 
       <strong align="center">Firebase</strong>
     </td>
     <td>Autenticación, base de datos en tiempo real y estadísticas</td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img align="center" src="https://cdn.worldvectorlogo.com/logos/pixabay.svg" width="40" alt="Pixabay"/>
+      <strong align="center">Firebase</strong>
+    </td>
+    <td>Música y efectos de sonido</td>
   </tr>
 </table>
 
