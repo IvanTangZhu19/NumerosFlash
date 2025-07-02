@@ -85,7 +85,7 @@ Suma (o resta) correctamente todos los números que van apareciendo en pantalla 
 
 ## Vídeo Demo
 
-[![Demo del proyecto](media/miniatura.jpg)](media/video_demo.mp4)
+[![Demo del proyecto](media/miniatura.jpg)](https://youtu.be/fRjNzxN5e0M)
 
 ## Diseño
 
