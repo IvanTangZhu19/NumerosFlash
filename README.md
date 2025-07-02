@@ -83,6 +83,10 @@ Suma (o resta) correctamente todos los números que van apareciendo en pantalla 
   <img src="Capturas/Capturas app (7).jpeg" width="180" alt="Créditos"/>
 </p>
 
+## Vídeo Demo
+
+[![Demo del proyecto](media/miniatura.jpg)](media/video_demo.mp4)
+
 ## Diseño
 
 [Diseño figma](https://www.figma.com/design/QLWcmwfSmM4ncZ6VChTqNn/NumerosFlash?node-id=0-1&t=dF7cjJljrQM58co2-1)
