@@ -73,7 +73,8 @@ fun Profile(navController: NavController, viewModel: UserViewModel){
             },
             dismissButton = {
                 TextButton(onClick = { showLogoutDialog = false }) {
-                    Text("Cancelar")
+                    Text("Cancelar",
+                        fontFamily = KanitFontFamily)
                 }
             }
         )
