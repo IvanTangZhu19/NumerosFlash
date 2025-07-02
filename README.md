@@ -79,8 +79,13 @@ Suma (o resta) correctamente todos los números que van apareciendo en pantalla 
   <img src="Capturas/Capturas app (2).jpeg" width="180" alt="Dificultad"/>
   <img src="Capturas/Capturas app (5).jpeg" width="180" alt="Juego"/>
   <img src="Capturas/Capturas app (1).jpeg" width="180" alt="Juego res"/>
-  <img src="Capturas/Capturas app (3).jpeg" width="180" alt="Juego"/>
+  <img src="Capturas/Capturas app (3).jpeg" width="180" alt="Instrucciones"/>
+  <img src="Capturas/Capturas app (7).jpeg" width="180" alt="Créditos"/>
 </p>
+
+## Vídeo Demo
+
+[![Demo del proyecto](media/miniatura.jpg)](https://youtu.be/fRjNzxN5e0M)
 
 ## Diseño
 

@@ -66,16 +66,16 @@ fun Levels(navController: NavController, gameViewModel: GameViewModel){
                             index.descripcion + "\n" +
                                     "\nTiempo: ${index.levels[0].tiempo} segundos\n" +
                                     "\nNivel ${index.levels[0].id}" +
-                                    "\n  - Rango: ${index.levels[0].rangoMin} - ${index.levels[0].rangoMax}" +
+                                    "\n  - Rango: [${index.levels[0].rangoMin} , ${index.levels[0].rangoMax}]" +
                                     "\n  - Operaciones: ${index.levels[0].numOperaciones}" +
                                     "\nNivel ${index.levels[1].id}" +
-                                    "\n  - Rango: ${index.levels[1].rangoMin} - ${index.levels[1].rangoMax}" +
+                                    "\n  - Rango: [${index.levels[1].rangoMin} , ${index.levels[1].rangoMax}]" +
                                     "\n  - Operaciones: ${index.levels[1].numOperaciones}" +
                                     "\nNivel ${index.levels[2].id}" +
-                                    "\n  - Rango: ${index.levels[2].rangoMin} - ${index.levels[2].rangoMax}" +
+                                    "\n  - Rango: [${index.levels[2].rangoMin} , ${index.levels[2].rangoMax}]" +
                                     "\n  - Operaciones: ${index.levels[2].numOperaciones}" +
                                     "\nNivel ${index.levels[3].id}" +
-                                    "\n  - Rango: ${index.levels[3].rangoMin} - ${index.levels[3].rangoMax}" +
+                                    "\n  - Rango: [${index.levels[3].rangoMin} , ${index.levels[3].rangoMax}]" +
                                     "\n  - Operaciones: ${index.levels[3].numOperaciones}",
                             navController,
                             index.levels,
