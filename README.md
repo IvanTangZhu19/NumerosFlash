@@ -85,7 +85,16 @@ Suma (o resta) correctamente todos los números que van apareciendo en pantalla 
 
 ## Vídeo Demo
 
-[![Demo del proyecto](media/miniatura.jpg)](https://youtu.be/fRjNzxN5e0M)
+
+https://github.com/user-attachments/assets/11b12ad3-6961-459c-9437-35532913c615
+
+
+
+<p align="center">
+  <a href="https://youtu.be/fRjNzxN5e0M" target="_blank">
+    🔗 <strong>Ver el video completo mostrando todas las secciones y niveles de dificultad</strong>
+  </a>
+</p>
 
 ## Diseño
 
