@@ -85,16 +85,14 @@ Suma (o resta) correctamente todos los números que van apareciendo en pantalla 
 
 ## Vídeo Demo
 
-
 https://github.com/user-attachments/assets/11b12ad3-6961-459c-9437-35532913c615
 
-
-
 <p align="center">
-  <a href="https://youtu.be/fRjNzxN5e0M" target="_blank">
-    🔗 <strong>Ver el video completo mostrando todas las secciones y niveles de dificultad</strong>
-  </a>
+    🔗 <strong>Dale clic a la siguiente imagen con el video completo mostrando todas las secciones y niveles de dificultad</strong>
 </p>
+
+[![Video completo en youtube](https://img.youtube.com/vi/fRjNzxN5e0M/0.jpg)](https://www.youtube.com/watch?v=fRjNzxN5e0M)
+
 
 ## Diseño
 
@@ -113,7 +111,8 @@ https://github.com/user-attachments/assets/11b12ad3-6961-459c-9437-35532913c615
 
 - [x] Diseño de pantallas
 - [x] Modo solitario funcional
-- [x] Publicación en Play Store
+- [x] Publicación Versión 1 en Play Store
+- [x] Versión 2 con bugs y errores solucionados
 - [ ] Modo Multijugador
 
 ---
