@@ -2,6 +2,14 @@
 <h1 align="center">NúmerosFlash</h1>
 <p align="center"> <em>Recuerda, calcula... y ¡gana en un flash!</em> </p>
 <p align="center">
+  <img src="https://img.shields.io/badge/kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white" alt="Kotlin" width="100"/>
+  <img src="https://img.shields.io/badge/firebase-a08021?style=for-the-badge&logo=firebase&logoColor=ffcd34" alt="Firebase" width="120"/>
+  <img src="https://img.shields.io/badge/android%20studio-346ac1?style=for-the-badge&logo=android%20studio&logoColor=white" alt="Android Studio" width="180"/>
+  <img src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white" alt="Figma" width="100"/>
+  <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android" width="120"/>
+  <img src="https://img.shields.io/badge/App_Store-0D96F6?style=for-the-badge&logo=app-store&logoColor=white" alt="App Store" width="130"/>
+</p>
+<p align="center">
   <img src="app/src/main/ic_launcher-playstore.png" alt="Logo" width="300"/>
   <a href="https://play.google.com/store/apps/details?id=co.edu.upb.numerosflash">
     <img src="Capturas/Captura Grafico funciones.png" alt="Gráfico de funciones" width="1000"/>
