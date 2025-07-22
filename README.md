@@ -118,5 +118,4 @@ https://github.com/user-attachments/assets/11b12ad3-6961-459c-9437-35532913c615
 ---
 
 
-Desarrollado por Ivan Tang Zhu
-
+Desarrollado por [IvanTangZhu19](https://github.com/IvanTangZhu19)
